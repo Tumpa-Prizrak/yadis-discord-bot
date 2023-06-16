@@ -10,4 +10,4 @@ class Configs(Enum):
 
 
 def load_config(file: Configs | str) -> dict[str, Any]:
-    return json.load(open(file if isinstance(file, str) else file.value, 'r'))
+    return json.load(open(file if isinstance(file, str) else file.value, "r"))

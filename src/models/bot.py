@@ -6,7 +6,14 @@ from asyncio import run as async_run
 
 
 class Yadis(commands.Bot):
-    def __init__(self, debug_channel_id: int, intents: int, token: Optional[str] = None, *args, **kwargs):
+    def __init__(
+        self,
+        debug_channel_id: int,
+        intents: int,
+        token: Optional[str] = None,
+        *args,
+        **kwargs
+    ):
         super().__init__(
             case_insensitive=False,
             strip_after_prefix=True,
@@ -23,6 +30,8 @@ class Yadis(commands.Bot):
         await self.logger.info("Ready!", to_file=False)
 
     def run(self, token: Optional[str] = None):
-        async_run(self.logger.sucsess("Locked and loaded!", to_file=False, to_channel=False))
+        async_run(
+            self.logger.sucsess("Locked and loaded!", to_file=False, to_channel=False)
+        )
         async_run(self.logger.info("Starting...", to_file=False, to_channel=False))
         super().run(token or self.token, log_handler=None)

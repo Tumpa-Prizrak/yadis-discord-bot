@@ -13,7 +13,7 @@ bot = Yadis(
     command_prefix=bot_info.get("prefix"),
     owner_id=bot_info.get("owner"),
     debug_channel_id=bot_info.get("debug_channel_id"),
-    intents=bot_info.get("intents")
+    intents=bot_info.get("intents"),
 )
 
 bot.run()
