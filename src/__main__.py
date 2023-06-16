@@ -1,6 +1,6 @@
-from models.bot import Yadis
-import config
-import custom_logs
+from src.models.bot import Yadis
+from src import config
+from src import custom_logs
 from asyncio import run
 
 bot_info = config.load_config(config.Configs.bot_info)

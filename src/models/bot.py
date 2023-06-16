@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 from typing import Optional
-import custom_logs
+from src import custom_logs
 from asyncio import run as async_run
 
 

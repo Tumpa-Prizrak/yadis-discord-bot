@@ -1,6 +1,6 @@
 import colorama
 import datetime
-import config
+from src import config
 from discord.ext.commands import Bot
 from discord import Embed
 from functools import partialmethod

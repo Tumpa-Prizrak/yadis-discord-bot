@@ -1,7 +1,7 @@
 from enum import Enum
 import json
 from typing import Any
-from . import pyconfig
+from src.config import pyconfig
 
 
 class Configs(Enum):
