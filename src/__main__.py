@@ -8,6 +8,16 @@ bot_info = config.load_config(config.Configs.bot_info)
 log = custom_logs.Logger("Main")
 run(log.info(message="Loading...", to_channel=False, to_file=False))
 
+
+
+
+
+
+
+
+
+
+
 bot = Yadis(
     token=bot_info.get("token"),
     command_prefix=bot_info.get("prefix"),
