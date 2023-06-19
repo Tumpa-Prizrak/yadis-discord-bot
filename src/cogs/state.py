@@ -20,7 +20,7 @@ class Cog(commands.Cog):
             self.logger.error("Key 'state_channel_id' is not found at bot_info")
 
     class StateView(discord.ui.View):
-        @discord.ui.Button(style=discord.ui.ButtonStyle.green, label="Check", emoji="✅") # FIXME module 'discord.ui' has no attribute 'ButtonStyle'
+        @discord.ui.button(label="Check", emoji="✅") # FIXME module 'discord.ui' has no attribute 'ButtonStyle'
         async def check(self, _, interaction: discord.Interaction):
             await interaction.response.send_modal(discord.ui.Modal(title="Bot is online"))
 

@@ -49,15 +49,15 @@ python3 -m src
 работать и на более ранних или поздних версиях
 
 ## Eng
-The name Yadis stands for *Y*et *A*nother *DIS*cord bot bot<br>
+The name Yadis stands for *Y*et *A*nother *DIS*cord bot<br>
 
 <br><br>
 
 To run this bot:
 ```shell
 git clone https://github.com/Tumpa-Prizrak/yadis.git
-cd yadis # Clone the repository and jump to the root directory
-pip3 install -r requirements.txt # Install dependencies
+cd yadis
+pip3 install -r requirements.txt
 ```
 Next, create a file `src/config/bot_info.json` and enter the following fields into it:
 - token `str` bot token received from [this site](https://discord.com/developers/applications)
@@ -93,5 +93,5 @@ You can run the bot with the following command:
 ```shell
 python3 -m src
 ```
-The bot has been tested on version ``3.10.8``, but may 
+The bot has been tested on version ``3.10.8``, but
 may work on earlier or later versions
