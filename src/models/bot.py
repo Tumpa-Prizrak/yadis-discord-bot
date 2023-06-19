@@ -3,6 +3,7 @@ from discord.ext import commands
 from typing import Optional
 from src import custom_logs
 from asyncio import run as async_run
+from os import listdir
 
 
 class Yadis(commands.Bot):
@@ -35,3 +36,12 @@ class Yadis(commands.Bot):
         )
         async_run(self.logger.info("Starting...", to_file=False, to_channel=False))
         super().run(token or self.token, log_handler=None)
+
+    async def setup_hook(self):
+        for cog in listdir("src/cogs"):
+            try:
+                if cog.endswith(".py") and not cog.startswith("nc_"):
+                    await self.load_extension(f"src.cogs.{cog[:-3]}")
+                    await self.logger.sucsess(f"cog {cog} loaded!", to_channel=False, to_file=False)
+            except Exception as e:
+                await self.logger.error(f"{e} while loading cog {cog}", to_channel=False)

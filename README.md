@@ -3,11 +3,13 @@
 ## Rus:
 Название Yadis расшифровывается как *Y*et *A*nother *DIS*cord bot<br>
 
+<br><br>
+
 Для запуска данного бота:
 ```shell
 git clone https://github.com/Tumpa-Prizrak/yadis.git
-cd yadis # Клонирование репозитория и переход в корневую директорию
-pip3 install -r requirements.txt # Установка зависимостей
+cd yadis
+pip3 install -r requirements.txt
 ```
 Далее создайте файл `src/config/bot_info.json` и внесите в него следующие поля:
 - token `str` токен бота получаемый с [этого сайта](https://discord.com/developers/applications)
@@ -27,6 +29,18 @@ pip3 install -r requirements.txt # Установка зависимостей
 }
 ```
 
+После этого откройте файл ``src/config/pyconfig.py``
+и найдите переменную version
+```py
+verson = Version(0, 0, 1, True, False)
+```
+замените четвёртый аттрибут на False
+```py
+verson = Version(0, 0, 1, False, False)
+```
+
+<br><br>
+
 Запустить бота можно при помощи следующей команды:
 ```shell
 python3 -m src
@@ -36,6 +50,8 @@ python3 -m src
 
 ## Eng
 The name Yadis stands for *Y*et *A*nother *DIS*cord bot bot<br>
+
+<br><br>
 
 To run this bot:
 ```shell
@@ -60,6 +76,18 @@ The resulting file will look something like this:
     "intents": 0
 }
 ```
+
+After that, open the file ``src/config/pyconfig.py``.
+and find the variable version
+```py
+verson = Version(0, 0, 1, True, False)
+```
+Replace the fourth attribute with False
+```py
+verson = Version(0, 0, 1, False, False)
+```
+
+<br><br>
 
 You can run the bot with the following command:
 ```shell

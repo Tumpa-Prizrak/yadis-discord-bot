@@ -1,5 +1,22 @@
 import colorama
 import discord
+from dataclasses import dataclass
+
+@dataclass
+class Version:
+    major: int
+    middle: int
+    minor: int
+    official: bool
+    final: bool
+
+class Colors:
+    dt_color = colorama.Fore.BLUE
+    source_color = colorama.Fore.MAGENTA
+    reset = colorama.Fore.RESET
+
+def to_dscolor(color: colorama.Fore):
+    return color_map.get(color, discord.Color.green())
 
 color_map = {
     colorama.Fore.RED: discord.Color.red(),
@@ -12,12 +29,4 @@ color_map = {
     colorama.Fore.BLACK: discord.Color.from_rgb(0, 0, 0),
 }
 
-
-class Colors:
-    dt_color = colorama.Fore.BLUE
-    source_color = colorama.Fore.MAGENTA
-    reset = colorama.Fore.RESET
-
-
-def to_dscolor(color: colorama.Fore):
-    return color_map.get(color, discord.Color.green())
+verson = Version(0, 0, 1, True, False)
