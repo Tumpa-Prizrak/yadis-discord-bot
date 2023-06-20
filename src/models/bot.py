@@ -4,6 +4,7 @@ from typing import Optional
 from src import custom_logs
 from asyncio import run as async_run
 from os import listdir
+from src.models import error
 
 
 class Yadis(commands.Bot):
@@ -26,6 +27,7 @@ class Yadis(commands.Bot):
         self.token = token
         self.debug_channel = self.get_channel(debug_channel_id)
         self.logger = custom_logs.Logger("Bot", self)
+        self.commands_logger = custom_logs.Logger("Commands", self)
 
     async def on_ready(self):
         await self.logger.info("Ready!", to_file=False)
@@ -35,7 +37,13 @@ class Yadis(commands.Bot):
             self.logger.sucsess("Locked and loaded!", to_file=False, to_channel=False)
         )
         async_run(self.logger.info("Starting...", to_file=False, to_channel=False))
-        super().run(token or self.token, log_handler=None)
+        super().run(token or self.token)
+
+    async def on_command_error(self, _, exception: Exception):
+        await self.commands_logger.error(str(exception))
+
+    async def on_error(self, event, *args, **kwargs):
+        await self.commands_logger.error(f"{event} {' '.join(args)} {' '.join(map(lambda x, y: f'{x}={y}', kwargs.items()))}")
 
     async def setup_hook(self):
         for cog in listdir("src/cogs"):
@@ -44,4 +52,11 @@ class Yadis(commands.Bot):
                     await self.load_extension(f"src.cogs.{cog[:-3]}")
                     await self.logger.sucsess(f"cog {cog} loaded!", to_channel=False, to_file=False)
             except Exception as e:
-                await self.logger.error(f"{e} while loading cog {cog}", to_channel=False)
+                e = e.args[0]
+                if len(s := e.split(": ")) >= 2:
+                    e = ": ".join(s[1:])
+                if any(filter(lambda x: x.__name__ in e, error._warnings)):
+                    func = self.logger.warning
+                else:
+                    func = self.logger.error
+                await func(f"{e} while loading cog {cog}", to_channel=False)

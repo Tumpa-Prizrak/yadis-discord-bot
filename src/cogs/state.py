@@ -3,6 +3,7 @@ import discord
 from src.config import pyconfig
 from src import config
 from src import custom_logs
+from src.models import error
 
 class Cog(commands.Cog):
     def __init__(self, client: commands.Bot):
@@ -21,11 +22,15 @@ class Cog(commands.Cog):
 
     class StateView(discord.ui.View):
         @discord.ui.button(label="Check", emoji="✅") # FIXME module 'discord.ui' has no attribute 'ButtonStyle'
-        async def check(self, _, interaction: discord.Interaction):
-            await interaction.response.send_modal(discord.ui.Modal(title="Bot is online"))
+        async def check(self, interaction: discord.Interaction, _):
+            print("Check")
+            print(type(interaction))
+            print(interaction.response.is_done())
+            await interaction.response.send_message(content="Bot is online!", ephemeral=True)
+            print("Sent!")
 
 async def setup(bot: commands.Bot):
     if pyconfig.verson.official:
         await bot.add_cog(Cog(bot))
     else:
-        raise ValueError("Don't run cause it's not an official bot. It's not an error, keep going")
+        raise error.NotOfficial("Don't run cause it's not an official bot. It's not an error, keep going")
