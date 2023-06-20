@@ -14,7 +14,7 @@ class Yadis(commands.Bot):
         intents: int,
         token: Optional[str] = None,
         *args,
-        **kwargs
+        **kwargs,
     ):
         super().__init__(
             case_insensitive=False,
@@ -22,7 +22,7 @@ class Yadis(commands.Bot):
             help_command=None,
             intents=discord.Intents(intents),
             *args,
-            **kwargs
+            **kwargs,
         )
         self.token = token
         self.debug_channel = self.get_channel(debug_channel_id)
@@ -43,14 +43,18 @@ class Yadis(commands.Bot):
         await self.commands_logger.error(str(exception))
 
     async def on_error(self, event, *args, **kwargs):
-        await self.commands_logger.error(f"{event} {' '.join(args)} {' '.join(map(lambda x, y: f'{x}={y}', kwargs.items()))}")
+        await self.commands_logger.error(
+            f"{event} {' '.join(args)} {' '.join(map(lambda x, y: f'{x}={y}', kwargs.items()))}"
+        )
 
     async def setup_hook(self):
         for cog in listdir("src/cogs"):
             try:
                 if cog.endswith(".py") and not cog.startswith("nc_"):
                     await self.load_extension(f"src.cogs.{cog[:-3]}")
-                    await self.logger.sucsess(f"cog {cog} loaded!", to_channel=False, to_file=False)
+                    await self.logger.sucsess(
+                        f"cog {cog} loaded!", to_channel=False, to_file=False
+                    )
             except Exception as e:
                 e = e.args[0]
                 if len(s := e.split(": ")) >= 2:
