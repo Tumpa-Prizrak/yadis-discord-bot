@@ -24,19 +24,6 @@ class Cog(commands.Cog):
         except KeyError:
             self.logger.error("Key 'state_channel_id' is not found at bot_info")
 
-    class StateView(discord.ui.View):
-        @discord.ui.button(
-            label="Check", emoji="✅"
-        )  # FIXME module 'discord.ui' has no attribute 'ButtonStyle'
-        async def check(self, interaction: discord.Interaction, _):
-            print("Check")
-            print(type(interaction))
-            print(interaction.response.is_done())
-            await interaction.response.send_message(
-                content="Bot is online!", ephemeral=True
-            )
-            print("Sent!")
-
 
 async def setup(bot: commands.Bot):
     if pyconfig.verson.official:

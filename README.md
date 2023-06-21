@@ -59,14 +59,14 @@ git clone https://github.com/Tumpa-Prizrak/yadis.git
 cd yadis
 pip3 install -r requirements.txt
 ```
-Next, create a file `src/config/bot_info.json` and enter the following fields into it:
-- token `str` bot token received from [this site](https://discord.com/developers/applications)
-- appid `int` application id. Obtained in the same place
-- prefix `str` symbol from which you start commands *(prefix)*
-- debug_channel_id `int` id of the channel to which the bot will send logs
-- intents `int` intents. You can easily calculate on [this website](https://discord-intents-calculator.vercel.app)
+Next, create a file called `src/config/bot_info.json` and fill it with the following fields
+- token `str` bot token that was received from [this page] (https://discord.com/developers/applications)
+- appid `int` application id. Received in the same place
+- prefix `str` Symbol from which you will start the commands *(prefix)*.
+- debug_channel_id `int` Id of the channel to which the bot sends logs.
+- intents `int` intents. On [this website] (https://discord-intents-calculator.vercel.app) you can easily calculate this.
 
-The resulting file will look something like this:
+The result file will be something like this
 ```json
 {
     "token": "xxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -77,21 +77,21 @@ The resulting file will look something like this:
 }
 ```
 
-After that, open the file ``src/config/pyconfig.py``.
-and find the variable version
+Next, open ``src/config/pyconfig.py``
+and search for variable version
 ```py
 verson = Version(0, 0, 1, True, False)
 ```
-Replace the fourth attribute with False
+Change the fourth attribute to False
 ```py
 verson = Version(0, 0, 1, False, False)
 ```
 
 <br><br>
 
-You can run the bot with the following command:
+With the following command you can run the bot:
 ```shell
 python3 -m src
 ```
-The bot has been tested on version ``3.10.8``, but
+The bot was tested on version ``3.10.8``, but
 may work on earlier or later versions
