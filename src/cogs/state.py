@@ -4,23 +4,28 @@ from src.config import pyconfig
 from src import config
 from src import custom_logs
 from src.models import error
+import datetime as dt
+from src.models.ui import view
 
 
 class Cog(commands.Cog):
     def __init__(self, client: commands.Bot):
-        self.clinet = client
+        self.client = client
         self.logger = custom_logs.Logger("State", client)
         self.bot_config = config.load_config(config.Configs.bot_info)
+        self.dt_format = config.load_config(config.Configs.logger).get("dt_format")
 
     @commands.Cog.listener()
     async def on_ready(self):
         try:
-            channel = self.clinet.get_channel(self.bot_config["state_channel_id"])
+            channel = self.client.get_channel(self.bot_config["state_channel_id"])
             await channel.purge()
             await channel.send(
-                view=self.StateView(timeout=None),
+                view=view.StateView(timeout=None),
                 content="**Eng:** Press button to check bot state. If bot is offline you'll get interaction error\n**Rus:** Нажмите кнопку, чтобы проверить состояние бота. Если бот не в сети, вы получите ошибку взаимодействия",
             )
+            now = int(dt.datetime.now().timestamp())
+            await channel.send(content=f"**Eng: Bot started at <t:{now}>(<t:{now}:R>)\nRus: Бот запущен в <t:{now}>(<t:{now}:R>)**")
         except KeyError:
             self.logger.error("Key 'state_channel_id' is not found at bot_info")
 

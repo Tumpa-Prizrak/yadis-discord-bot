@@ -30,7 +30,7 @@ class Yadis(commands.Bot):
         self.commands_logger = custom_logs.Logger("Commands", self)
 
     async def on_ready(self):
-        await self.logger.info("Ready!", to_file=False)
+        await self.logger.sucsess("Ready!", to_file=False)
 
     def run(self, token: Optional[str] = None):
         async_run(
@@ -39,13 +39,16 @@ class Yadis(commands.Bot):
         async_run(self.logger.info("Starting...", to_file=False, to_channel=False))
         super().run(token or self.token)
 
-    async def on_command_error(self, _, exception: Exception):
+    """async def on_command_error(self, _, exception: Exception):
         await self.commands_logger.error(str(exception))
 
     async def on_error(self, event, *args, **kwargs):
+        print(event)
+        print(args)
+        print(kwargs)
         await self.commands_logger.error(
             f"{event} {' '.join(args)} {' '.join(map(lambda x, y: f'{x}={y}', kwargs.items()))}"
-        )
+        )"""
 
     async def setup_hook(self):
         for cog in listdir("src/cogs"):
