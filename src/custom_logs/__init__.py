@@ -48,7 +48,7 @@ class Logger:
             f'logs/{datetime.datetime.now().strftime(log_data.get("filename_format"))}'
         )
 
-    def write_to_file(self, level, message):
+    def write_to_file(self, level: str, message: str):
         path = self.get_file()
         if not os.path.exists(path):
             with open(self.get_file(), "a") as f:

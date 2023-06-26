@@ -9,6 +9,6 @@ class ConnetionClosed(Exception):
     ...
 
 
-_all = [NotOfficial]
+_all = [NotOfficial, ConnetionClosed]
 _warnings = [NotOfficial]
-_errors = []
+_errors = [ConnetionClosed]

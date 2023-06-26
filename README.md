@@ -7,8 +7,8 @@
 
 Для запуска данного бота:
 ```shell
-git clone https://github.com/Tumpa-Prizrak/yadis.git
-cd yadis
+git clone https://github.com/Tumpa-Prizrak/yadis-discord-bot.git
+cd yadis-discord-bot
 pip3 install -r requirements.txt
 ```
 Далее создайте файл `src/config/bot_info.json` и внесите в него следующие поля:
