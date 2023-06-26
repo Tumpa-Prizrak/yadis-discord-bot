@@ -51,19 +51,22 @@ class Yadis(commands.Bot):
         )"""
 
     async def setup_hook(self):
-        for cog in listdir("src/cogs"):
-            try:
-                if cog.endswith(".py") and not cog.startswith("nc_"):
-                    await self.load_extension(f"src.cogs.{cog[:-3]}")
-                    await self.logger.sucsess(
-                        f"cog {cog} loaded!", to_channel=False, to_file=False
-                    )
-            except Exception as e:
-                e = e.args[0]
-                if len(s := e.split(": ")) >= 2:
-                    e = ": ".join(s[1:])
-                if any(filter(lambda x: x.__name__ in e, error._warnings)):
-                    func = self.logger.warning
-                else:
-                    func = self.logger.error
-                await func(f"{e} while loading cog {cog}", to_channel=False)
+        print("\nCogs")
+        for category in listdir("src/cogs"):
+            for cog in listdir(f"src/cogs/{category}"):
+                try:
+                    if cog.endswith(".py") and not cog.startswith("nc_"):
+                        await self.load_extension(f"src.cogs.{category}.{cog[:-3]}")
+                        await self.logger.sucsess(
+                            f"cog {category}.{cog[-3]} loaded!", to_channel=False, to_file=False
+                        )
+                except Exception as e:
+                    e = e.args[0]
+                    if len(s := e.split(": ")) >= 2:
+                        e = ": ".join(s[1:])
+                    if any(filter(lambda x: x.__name__ in e, error._warnings)):
+                        func = self.logger.warning
+                    else:
+                        func = self.logger.error
+                    await func(f"{e} while loading cog {cog}", to_channel=False)
+        print("[END] Cogs\n")
