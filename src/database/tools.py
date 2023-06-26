@@ -25,10 +25,8 @@ class DatabaseConnection:
 
     def close(self):
         if self._is_closed(): return
-        self.cursor.close()
-        self.connection.close()
-        self.cursor = None
-        self.connection = None
+        self.cursor = self.cursor.close()
+        self.connection = self.connection.close()
 
     def read(self, query: str, mode: DBFormat) -> list | Any:
         if self._is_closed(): raise error.ConnetionClosed("Connection closed. You must use .open() first")

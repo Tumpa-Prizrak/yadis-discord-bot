@@ -33,4 +33,4 @@ color_map = {
     colorama.Fore.BLACK: discord.Color.from_rgb(0, 0, 0),
 }
 
-verson = Version(0, 0, 1, True, False)
+verson = Version(0, 0, 1, False, False)
