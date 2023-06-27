@@ -29,11 +29,11 @@ class DatabaseConnection:
         self.connection = self.connection.close()
 
     def read(self, query: str, mode: DBFormat) -> list | Any:
-        if self._is_closed(): raise error.ConnetionClosed("Connection closed. You must use .open() first")
+        if self._is_closed(): raise error.ConnectionClosed("Connection closed. You must use .open() first")
         return self._format_data(self._execute(query), mode)
 
     def write(self, query: str, log_errors: bool = True) -> bool:
-        if self._is_closed(): raise error.ConnetionClosed("Connection closed. You must use .open() first")
+        if self._is_closed(): raise error.ConnectionClosed("Connection closed. You must use .open() first")
         try:
             self._execute(query)
             self.connection.commit()
