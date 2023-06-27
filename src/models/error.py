@@ -10,7 +10,7 @@ class ConnectionClosed(Exception):
     """An exception raised when trying to perform an operation on a closed database connection."""
     ...
 
-
-_all = [NotOfficial, ConnectionClosed]
+    
+_all = [NotOfficial, ConnetionClosed]
 _warnings = [NotOfficial]
-_errors = [ConnectionClosed]
+_errors = [ConnetionClosed
