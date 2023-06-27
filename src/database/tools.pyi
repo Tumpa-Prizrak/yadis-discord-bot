@@ -1,5 +1,5 @@
 import sqlite3
-from .enums import DBFormat
+from src.database.enums import DBFormat
 from typing import Any, List, Self
 from src.custom_logs import Logger
 from asyncio import run
