@@ -51,7 +51,7 @@ class DatabaseConnection:
         return self.connection is None and self.cursor is None
 
     def _format_data(self, data, mode: DBFormat) -> list | Any:
-        if mode == DBFormat.Row or not data:
+        if mode == DBFormat.Raw or not data:
             return data
         elif mode == DBFormat.List:
             return [x[0] if len(x) == 1 else x for x in data]
