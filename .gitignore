@@ -166,3 +166,5 @@ bot_info.json
 poetry.lock
 pyproject.toml
 
+# VSCode shit
+.vscode/
