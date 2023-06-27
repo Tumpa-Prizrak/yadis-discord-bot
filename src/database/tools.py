@@ -7,7 +7,7 @@ from src.models import error
 
 class DatabaseConnection:
     def __init__(self, /, database_name: str = "src/database/database.db"):
-        self.database_name = database_name if database_name.startswith("src/") else "src/database/" + database_name
+        self.database_name = database_name if "/" not in database_name else "src/database/" + database_name
         self.cursor = None
         self.connection = None
         self.logger = Logger("DatabaseConnection")
@@ -29,11 +29,11 @@ class DatabaseConnection:
         self.connection = self.connection.close()
 
     def read(self, query: str, mode: DBFormat) -> list | Any:
-        if self._is_closed(): raise error.ConnetionClosed("Connection closed. You must use .open() first")
+        if self._is_closed(): raise error.ConnectionClosed("Connection closed. You must use .open() first")
         return self._format_data(self._execute(query), mode)
 
     def write(self, query: str, log_errors: bool = True) -> bool:
-        if self._is_closed(): raise error.ConnetionClosed("Connection closed. You must use .open() first")
+        if self._is_closed(): raise error.ConnectionClosed("Connection closed. You must use .open() first")
         try:
             self._execute(query)
             self.connection.commit()
@@ -51,7 +51,7 @@ class DatabaseConnection:
         return self.connection is None and self.cursor is None
 
     def _format_data(self, data, mode: DBFormat) -> list | Any:
-        if mode == DBFormat.Row or not data:
+        if mode == DBFormat.Raw or not data:
             return data
         elif mode == DBFormat.List:
             return [x[0] if len(x) == 1 else x for x in data]
