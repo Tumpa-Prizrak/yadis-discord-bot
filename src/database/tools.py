@@ -1,5 +1,5 @@
 import sqlite3
-from .enums import DBFormat
+from src.database.enums import DBFormat
 from typing import Any
 from src.custom_logs import Logger
 from asyncio import run
@@ -7,13 +7,14 @@ from src.models import error
 
 class DatabaseConnection:
     def __init__(self, /, database_name: str = "src/database/database.db"):
-        self.database_name = database_name if "/" not in database_name else "src/database/" + database_name
+        self.database_name = database_name if "/" in database_name else "src/database/" + database_name
         self.cursor = None
         self.connection = None
         self.logger = Logger("DatabaseConnection")
 
     def __enter__(self):
         self.open()
+        return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.close()
@@ -28,21 +29,21 @@ class DatabaseConnection:
         self.cursor = self.cursor.close()
         self.connection = self.connection.close()
 
-    def read(self, query: str, mode: DBFormat) -> list | Any:
+    def read(self, query: str, *args, mode: DBFormat) -> list | Any:
         if self._is_closed(): raise error.ConnectionClosed("Connection closed. You must use .open() first")
-        return self._format_data(self._execute(query), mode)
+        return self._format_data(self._execute(query, args), mode)
 
-    def write(self, query: str, log_errors: bool = True) -> bool:
+    def write(self, query: str, *args, log_errors: bool = True) -> bool:
         if self._is_closed(): raise error.ConnectionClosed("Connection closed. You must use .open() first")
         try:
-            self._execute(query)
+            self._execute(query, args)
             self.connection.commit()
         except Exception as e:
             if log_errors:
                 run(self.logger.error(e))
 
-    def _execute(self, query: str) -> list:
-        return self.cursor.execute(query).fetchall()
+    def _execute(self, query: str, params: tuple) -> list:
+        return self.cursor.execute(query, params).fetchall()
 
     def _is_opened(self):
         return self.connection is not None and self.cursor is not None
