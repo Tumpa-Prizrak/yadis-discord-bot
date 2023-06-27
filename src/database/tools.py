@@ -7,7 +7,7 @@ from src.models import error
 
 class DatabaseConnection:
     def __init__(self, /, database_name: str = "src/database/database.db"):
-        self.database_name = database_name if database_name.startswith("src/") else "src/database/" + database_name
+        self.database_name = database_name if "/" not in database_name else "src/database/" + database_name
         self.cursor = None
         self.connection = None
         self.logger = Logger("DatabaseConnection")
