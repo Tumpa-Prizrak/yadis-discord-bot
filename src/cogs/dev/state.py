@@ -25,7 +25,9 @@ class Cog(commands.Cog):
                 "**Rus:** Нажмите кнопку, чтобы проверить состояние бота. Если бот не в сети, вы получите ошибку взаимодействия",
             )
             now = round(time.time())
-            await channel.send(content=f"**Eng: Bot started at <t:{now}>(<t:{now}:R>)\nRus: Бот запущен в <t:{now}>(<t:{now}:R>)**")
+            await channel.send(
+                content=f"**Eng: Bot started at <t:{now}>(<t:{now}:R>)\nRus: Бот запущен в <t:{now}>(<t:{now}:R>)**"
+            )
         except KeyError:
             await self.logger.error("Key 'state_channel_id' is not found at bot_info")
 

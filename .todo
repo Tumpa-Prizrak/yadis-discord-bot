@@ -1,0 +1,98 @@
+- Blacklist
+- Commands counter
+- Info commands
+- Temp channels
+
+- Settings
+- - Prefix 
+- - Blacklist
+- - Temp voice entery
+- - Welcome channel id
+- - Welcome message
+- - Welcome role
+- - Moderation role
+- - Admin role
+- - Welcome messages
+
+- More custom models
+- - discord.Member
+- - discord.Guild (FIX)
+- - discord.Role
+- - discord.VoiceChannel
+- - discord.TextChannel
+- - discord.Message
+- - discord.Invite
+- - discord.Emoji
+
+- Custom permissions
+(Custom permissions for roles such as mod perms, setting perms, etc.)
+
+- Logging system (discord)
+- - Join / leave logs
+- - Command usage logs
+- - Mod action logs
+- - Edit message logs
+- - Edit channel logs
+- - Voice logs
+- - Edit role logs
+- - Edit user logs
+
+- Moderation commands
+- - Kick
+- - Ban
+- - Softban
+- - Mute
+- - Warn (perms? deleting?)
+- - Clear messages (purge)
+
+- Fun commands
+- - Meme
+- - Cat
+- - Dog
+- - Joke
+- - Inspire
+- - Fortune
+
+- Economic system
+- - Balance
+- - Bank
+- - Withdraw
+- - Deposit
+- - Work (job system)
+- - Pay (give money)
+- - Beg ( xD )
+- - Leaderboard
+- - Shop
+- - Buy
+- - Rob
+- - Slots
+- - Daily reward
+
+- Music commands
+- - Play
+- - Pause
+- - Resume
+- - Skip
+- - Queue 
+- - Now Playing
+- - Volume
+- - Repeat
+- - Seek
+- - Remove
+
+- Other commands
+- - Profile
+- - Avatar
+- - Nickname(s) (??)
+- - Invite counter
+
+- Auto role assigner
+- - Assign roles based on reactions
+- - Assign roles based on joining/leaving voice channels
+- - Assign roles based on sending a certain message
+- - Assign roles based on joining the server
+- - Assign roles based on member count
+- - Custom role assigner (admin panel)
+
+- Custom events
+- Custom slash commands
