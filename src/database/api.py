@@ -1,6 +1,6 @@
 from src.database.tools import DatabaseConnection
 from src.database.enums import DBFormat
-from src.models import discord as discordModels
+from src.models import discord as DiscordModels 
 import discord
 from typing import Optional
 from src.models.bot import Yadis
@@ -24,16 +24,16 @@ async def get_guild(
         raise ValueError("You must specify either owner or guild")
 
     voice_channel = await _get_voice_channel(bot, guild)
-    return discordModels.Guild.fromGuild(guild, voice_channel)  # type: ignore
+    return DiscordModels.Guild.from_guild(guild, voice_channel)  # type: ignore
 
 
-async def add_guild(guild: discord.Guild | discordModels.Guild):
+async def add_guild(guild: discord.Guild | DiscordModels.Guild):
     if isinstance(guild, discord.Guild):
-        guild = discordModels.Guild.fromGuild(guild, None)
+        guild = DiscordModels.Guild.from_guild(guild, None)
     await _add_guild(guild)
 
 
-async def _add_guild(guild: discordModels.Guild):
+async def _add_guild(guild: DiscordModels.Guild):
     with DatabaseConnection() as db:
         db.write(
             "INSERT INTO Guild (guild_id, name, owner, custom_voice_entery_id, member_count) VALUES (?, ?, ?, ?, ?)",

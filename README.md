@@ -12,9 +12,8 @@ cd yadis-discord-bot
 pip3 install -r requirements.txt
 ```
 Далее создайте файл `src/config/bot_info.json` и внесите в него следующие поля:
-- token `str` токен бота получаемый с [этого сайта](https://discord.com/developers/applications)
+- owners `list[int]` - ID владельцев бота (они смогут использовать некоторые команды, получат значок в профиле, т. д.). Может содержать и одного человека, но он всё равно должен быть обрамлём в список
 - appid `int` id приложения. Получается там же
-- prefix `str` символ с которого начинаются команды *(префикс)*
 - debug_channel_id `int` id канала, в который бот будет отправалять логи
 - intents `int` интенты. Можно легко посчитать на [этом сайте](https://discord-intents-calculator.vercel.app)
 
@@ -23,9 +22,12 @@ pip3 install -r requirements.txt
 {
     "token": "xxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     "appid": 0000000000000000000,
-    "prefix": "_",
     "debug_channel_id": 0,
-    "intents": 0
+    "intents": 0,
+    "owners": [
+        0,
+        0
+    ]
 }
 ```
 
@@ -60,7 +62,7 @@ cd yadis
 pip3 install -r requirements.txt
 ```
 Next, create a file called `src/config/bot_info.json` and fill it with the following fields
-- token `str` bot token that was received from [this page] (https://discord.com/developers/applications)
+- owners `list[int]` - IDs of bot owners (they will be able to use some commands, get an icon in profile, etc.). May contain a single person, but it should still be framed in a list
 - appid `int` application id. Received in the same place
 - prefix `str` Symbol from which you will start the commands *(prefix)*.
 - debug_channel_id `int` Id of the channel to which the bot sends logs.
@@ -70,10 +72,13 @@ The result file will be something like this
 ```json
 {
     "token": "xxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    "appid": 000000000000000000000,
-    "prefix": "_",
+    "appid": 0000000000000000000,
     "debug_channel_id": 0,
-    "intents": 0
+    "intents": 0,
+    "owners": [
+        0,
+        0
+    ]
 }
 ```
 

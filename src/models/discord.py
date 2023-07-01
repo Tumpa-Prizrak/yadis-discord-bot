@@ -6,10 +6,10 @@ class Guild(discord.Guild):
     custom_voice_entery: Optional[discord.VoiceChannel]
 
     @classmethod
-    def fromGuild(
+    def from_guild(
         cls,
         guild: discord.Guild,
-        custom_voice_entery: Optional[discord.VoiceChannel] = None,
+        custom_voice_entry: Optional[discord.VoiceChannel] = None,
     ):
         """Construct a Guild object from a discord.Guild.
 
@@ -20,10 +20,15 @@ class Guild(discord.Guild):
         Returns:
             Guild: The constructed Guild object.
         """
-        # TODO rewrite
-        obj = cls(data=guild.)
-        obj.roles = guild.roles
-        obj.channels = guild.channels
-        obj.members = guild.members
-        obj.custom_voice_entery = custom_voice_entery
+        # FIXME still not tested and shouldn't work
+        obj = cls(
+            data=guild.__class__.data,
+            custom_voice_entery=custom_voice_entry,
+            roles=guild.roles,
+            emojis=guild.emojis,
+            features=guild.features,
+            id=guild.id,
+            name=guild.name,
+            icon=guild.icon
+        )
         return obj
