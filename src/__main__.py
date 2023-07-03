@@ -26,9 +26,10 @@ from src.models.bot import Yadis
 from src import config
 from src import custom_logs
 from asyncio import run
-from discord.ext.commands import when_mentioned_or
+from src.models.discord import Guild
+import colorama
 
-
+colorama.init()
 bot_info = config.load_config(config.Configs.bot_info)
 
 log = custom_logs.Logger("Main")

@@ -1,6 +1,6 @@
 import sqlite3
 from src.database.enums import DBFormat
-from typing import Any
+from typing import Any, Union
 from src.custom_logs import Logger
 from asyncio import run
 from src.models import error
@@ -38,7 +38,7 @@ class DatabaseConnection:
         self.cursor = self.cursor.close()
         self.connection = self.connection.close()
 
-    def read(self, query: str, *args, mode: DBFormat) -> list | Any:
+    def read(self, query: str, *args, mode: DBFormat) -> Union[list, Any]:
         if self._is_closed():
             raise error.ConnectionClosed(
                 "Connection closed. You must use .open() first"
@@ -77,7 +77,7 @@ class DatabaseConnection:
     def _is_closed(self):
         return self.connection is None or self.cursor is None
 
-    def _format_data(self, data, mode: DBFormat) -> list | Any:
+    def _format_data(self, data, mode: DBFormat) -> Union[list, Any]:
         if mode == DBFormat.Raw or not data:
             return data
         elif mode == DBFormat.List:

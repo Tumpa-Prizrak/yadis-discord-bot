@@ -2,15 +2,15 @@ from src.database.tools import DatabaseConnection
 from src.database.enums import DBFormat
 from src.models import discord as DiscordModels 
 import discord
-from typing import Optional
+from typing import Optional, Union
 from src.models.bot import Yadis
 
 
 async def get_guild(
     bot: Yadis,
     *,
-    owner: Optional[discord.User | int],
-    guild: Optional[int | discord.Guild]
+    owner: Optional[Union[discord.User, int]] = None,
+    guild: Optional[Union[discord.Guild, int]] = None
 ):
     if owner is not None and guild is not None:
         raise ValueError("You must specify either owner or guild")
@@ -27,7 +27,7 @@ async def get_guild(
     return DiscordModels.Guild.from_guild(guild, voice_channel)  # type: ignore
 
 
-async def add_guild(guild: discord.Guild | DiscordModels.Guild):
+async def add_guild(guild: Union[discord.Guild, DiscordModels.Guild]):
     if isinstance(guild, discord.Guild):
         guild = DiscordModels.Guild.from_guild(guild, None)
     await _add_guild(guild)
