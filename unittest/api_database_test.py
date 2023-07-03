@@ -13,7 +13,7 @@ class TestDatabase(unittest.TestCase):
         open("src\\database\\test.db", "w").close()
 
         self.bot = Yadis(
-            token="MTExODgyNjAzMjAyODQ2MzE0Ng.GSDF2H.epnRn6061g0L1-J7PQzvQ9p37m8DIqNYQ5S3jM",
+            token="",
             owner_ids=[529302484901036043],
             debug_channel_id=1120278847888314389,  # type: ignore
             intents=0,  # type: ignore
