@@ -1,10 +1,12 @@
-from discord.ext.commands import Bot
-from typing import Optional
-from src import custom_logs
 from asyncio import run as async_run
 from os import listdir
-from src.models import error
+from typing import Optional
+
 from discord import Intents
+from discord.ext.commands import Bot
+
+from src import custom_logs
+from src.models import error
 
 
 class Yadis(Bot):
@@ -33,7 +35,7 @@ class Yadis(Bot):
     async def on_ready(self):
         await self.logger.success("Ready!", to_file=False)
 
-    def run(self, token: Optional[str] = None):       
+    def run(self, token: Optional[str] = None):
         async_run(
             self.logger.success("Locked and loaded!", to_file=False, to_channel=False)
         )
@@ -57,7 +59,7 @@ class Yadis(Bot):
             for cog in listdir(f"src/cogs/{category}"):
                 await self._load_cog(f"src.cogs.{category}.{cog[:-3]}")
         print("[END] Cogs\n")
-        
+
         print("Events")
         for cog in listdir(f"src/events/"):
             await self._load_cog(f"src.events.{cog[:-3]}")

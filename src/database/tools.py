@@ -1,8 +1,9 @@
 import sqlite3
-from src.database.enums import DBFormat
-from typing import Any, Union
-from src.custom_logs import Logger
 from asyncio import run
+from typing import Any, Union
+
+from src.custom_logs import Logger
+from src.database.enums import DBFormat
 from src.models import error
 
 

@@ -1,5 +1,6 @@
-import colorama
 from dataclasses import dataclass
+
+import colorama
 from discord import Color
 
 

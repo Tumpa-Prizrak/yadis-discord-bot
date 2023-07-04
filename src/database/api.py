@@ -1,16 +1,12 @@
-from src.database.tools import DatabaseConnection
-from src.database.enums import DBFormat
-
 from typing import Optional, Union
+
+from discord import Guild as dGuild
+from discord import NotFound, User
+
+from src.database.enums import DBFormat
+from src.database.tools import DatabaseConnection
 from src.models.bot import Yadis
-from discord import (
-    User,
-    Guild as dGuild,
-    NotFound
-)
-from src.models.discord import (
-    Guild
-)
+from src.models.discord import Guild
 
 
 async def get_guild(
@@ -41,7 +37,6 @@ async def add_guild(guild: Union[dGuild, Guild]):
 
 
 async def _add_guild(guild: Guild):
-    
     with DatabaseConnection() as db:
         db.write(
             "INSERT INTO Guild (guild_id, name, owner, custom_voice_entery_id, member_count) VALUES (?, ?, ?, ?, ?)",

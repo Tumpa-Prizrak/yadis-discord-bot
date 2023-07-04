@@ -1,11 +1,13 @@
-import colorama
 import datetime
-from src import config
-from discord.ext.commands import Bot
-from discord import Embed
-from functools import partialmethod
 import os
+from functools import partialmethod
 from typing import Optional
+
+import colorama
+from discord import Embed
+from discord.ext.commands import Bot
+
+from src import config
 
 log_data = config.load_config(config.Configs.logger)
 bot_info = config.load_config(config.Configs.bot_info)
@@ -45,9 +47,7 @@ class Logger:
 
     @staticmethod
     def get_file():
-        return (
-            f'logs/{datetime.datetime.now().strftime(log_data.get("filename_format", ""))}'
-        )
+        return f'logs/{datetime.datetime.now().strftime(log_data.get("filename_format", ""))}'
 
     def write_to_file(self, level: str, message: str):
         path = self.get_file()

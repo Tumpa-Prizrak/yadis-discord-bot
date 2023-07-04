@@ -1,4 +1,5 @@
-## Guild
+<h2 style="margin: auto; width: 10%;"> Guild </h2>
+
 | name | type | null | other | desctiption |
 | :-: | :-: | :-: | :-: | :-: |
 | rowid | INTEGER | NOT NULL  | PRIMARY KEY AUTOINCREMENT | row id at the db |
