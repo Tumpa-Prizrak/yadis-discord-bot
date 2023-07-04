@@ -24,12 +24,12 @@ async def get_guild(
         raise ValueError("You must specify either owner or guild")
 
     voice_channel = await _get_voice_channel(bot, guild)
-    return DiscordModels.Guild.from_guild(guild, voice_channel)  # type: ignore
+    return DiscordModels.Guild(guild, voice_channel)  # type: ignore
 
 
 async def add_guild(guild: Union[discord.Guild, DiscordModels.Guild]):
     if isinstance(guild, discord.Guild):
-        guild = DiscordModels.Guild.from_guild(guild, None)
+        guild = DiscordModels.Guild(guild, None)
     await _add_guild(guild)
 
 

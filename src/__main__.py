@@ -28,6 +28,7 @@ from src import custom_logs
 from asyncio import run
 from src.models.discord import Guild
 import colorama
+import discord
 
 colorama.init()
 bot_info = config.load_config(config.Configs.bot_info)
@@ -36,10 +37,10 @@ log = custom_logs.Logger("Main")
 run(log.info(message="Loading...", to_channel=False, to_file=False))
 
 bot = Yadis(
-    token=bot_info.get("token"),
-    owner_ids=bot_info.get("owners"),
+    token=bot_info.get("token", ""),
+    owner_ids=bot_info.get("owners", []),
     debug_channel_id=bot_info.get("debug_channel_id"),  # type: ignore
-    intents=bot_info.get("intents"),  # type: ignore
+    intents=bot_info.get("intents", discord.Intents.all()),  # type: ignore
 )
 
 bot.run()

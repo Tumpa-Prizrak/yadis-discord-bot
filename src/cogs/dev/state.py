@@ -20,7 +20,7 @@ class Cog(commands.Cog):
             channel = self.client.get_channel(self.bot_config["state_channel_id"])
             await channel.purge()
             await channel.send(
-                view=view.StateView(timeout=None),
+                view=view.state.StateView(timeout=None),
                 content="**Eng:** Press button to check bot state. If bot is offline you'll get interaction error\n"
                 "**Rus:** Нажмите кнопку, чтобы проверить состояние бота. Если бот не в сети, вы получите ошибку взаимодействия",
             )
