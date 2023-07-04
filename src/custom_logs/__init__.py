@@ -5,20 +5,21 @@ from discord.ext.commands import Bot
 from discord import Embed
 from functools import partialmethod
 import os
+from typing import Optional
 
 log_data = config.load_config(config.Configs.logger)
 bot_info = config.load_config(config.Configs.bot_info)
 
 
 class Logger:
-    def __init__(self, source: str = "", bot: Bot = None):
+    def __init__(self, source: str = "", bot: Optional[Bot] = None):
         self.source = source
         self.bot = bot
 
-    def format(self, level: str, message: str, level_color: colorama.Fore = None):
-        return log_data.get("log_format").format(
+    def format(self, level: str, message: str, level_color: Optional[colorama.Fore] = None):  # type: ignore
+        return log_data.get("log_format", "").format(
             **{
-                "dt": datetime.datetime.now().strftime(log_data.get("dt_format")),
+                "dt": datetime.datetime.now().strftime(log_data.get("dt_format", "")),
                 "source": self.source,
                 "level": level,
                 "message": message,
@@ -35,7 +36,7 @@ class Logger:
             }
         )
 
-    def format_embed(self, level_color: colorama.Fore, level: str, message: str):
+    def format_embed(self, level_color: colorama.Fore, level: str, message: str):  # type: ignore
         return Embed(
             title=self.source,
             color=config.pyconfig.to_dscolor(level_color),
@@ -45,7 +46,7 @@ class Logger:
     @staticmethod
     def get_file():
         return (
-            f'logs/{datetime.datetime.now().strftime(log_data.get("filename_format"))}'
+            f'logs/{datetime.datetime.now().strftime(log_data.get("filename_format", ""))}'
         )
 
     def write_to_file(self, level: str, message: str):
@@ -62,7 +63,7 @@ class Logger:
         self,
         message: str,
         *,
-        level_color: colorama.Fore,
+        level_color: colorama.Fore,  # type: ignore
         level: str,
         to_file: bool = True,
         to_channel: bool = True,
@@ -72,7 +73,7 @@ class Logger:
             self.write_to_file(level, message)
         if to_channel and self.bot is not None:
             try:
-                await self.bot.get_channel(bot_info.get("debug_channel_id")).send(
+                await self.bot.get_channel(bot_info.get("debug_channel_id", 0)).send(  # type: ignore
                     embed=self.format_embed(level_color, level, message)
                 )
             except AttributeError:

@@ -36,7 +36,7 @@ class Colors:
     """The color reset code."""
 
 
-def to_dscolor(color: colorama.Fore):
+def to_dscolor(color: colorama.Fore):  # type: ignore
     """Convert a colorama Fore color to a discord.Color.
 
     Args:

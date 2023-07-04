@@ -5,6 +5,7 @@ from src import config
 from src import custom_logs
 from src.models import error
 from src.models.ui import view
+from discord import TextChannel
 
 
 class Cog(commands.Cog):
@@ -17,7 +18,7 @@ class Cog(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         try:
-            channel = self.client.get_channel(self.bot_config["state_channel_id"])
+            channel: TextChannel = self.client.get_channel(self.bot_config["state_channel_id"])  # type: ignore
             await channel.purge()
             await channel.send(
                 view=view.state.StateView(timeout=None),

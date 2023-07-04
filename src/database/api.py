@@ -34,14 +34,15 @@ async def add_guild(guild: Union[discord.Guild, DiscordModels.Guild]):
 
 
 async def _add_guild(guild: DiscordModels.Guild):
+    
     with DatabaseConnection() as db:
         db.write(
             "INSERT INTO Guild (guild_id, name, owner, custom_voice_entery_id, member_count) VALUES (?, ?, ?, ?, ?)",
-            guild.id,
-            guild.name,
-            guild.owner_id,
-            guild.custom_voice_entery and guild.custom_voice_entery.id,
-            guild.member_count,
+            guild.id,  # type: ignore
+            guild.name,  # type: ignore
+            guild.owner_id,  # type: ignore
+            guild.custom_voice_entery and guild.custom_voice_entery.id,  # type: ignore
+            guild.member_count,  # type: ignore
         )
 
 

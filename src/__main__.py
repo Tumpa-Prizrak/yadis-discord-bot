@@ -22,13 +22,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-from src.models.bot import Yadis
-from src import config
-from src import custom_logs
 from asyncio import run
-from src.models.discord import Guild
+
 import colorama
-import discord
+from discord import Intents
+
+from src import config, custom_logs
+from src.models.bot import Yadis
+from src.models.discord import Guild
+
 
 colorama.init()
 bot_info = config.load_config(config.Configs.bot_info)
@@ -39,8 +41,8 @@ run(log.info(message="Loading...", to_channel=False, to_file=False))
 bot = Yadis(
     token=bot_info.get("token", ""),
     owner_ids=bot_info.get("owners", []),
-    debug_channel_id=bot_info.get("debug_channel_id"),  # type: ignore
-    intents=bot_info.get("intents", discord.Intents.all()),  # type: ignore
+    debug_channel_id=bot_info.get("debug_channel_id", 0),
+    intents=bot_info.get("intents", Intents.all()),
 )
 
 bot.run()

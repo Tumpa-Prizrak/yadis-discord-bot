@@ -17,7 +17,7 @@ class Yadis(commands.Bot):
         **kwargs,
     ):
         super().__init__(
-            command_prefix=None,
+            command_prefix="None",
             case_insensitive=False,
             strip_after_prefix=True,
             help_command=None,
@@ -33,12 +33,12 @@ class Yadis(commands.Bot):
     async def on_ready(self):
         await self.logger.success("Ready!", to_file=False)
 
-    def run(self, token: Optional[str] = None):
+    def run(self, token: Optional[str] = None):       
         async_run(
             self.logger.success("Locked and loaded!", to_file=False, to_channel=False)
         )
         async_run(self.logger.info("Starting...", to_file=False, to_channel=False))
-        super().run(token or self.token)
+        super().run(token or self.token)  # type: ignore
 
     """async def on_command_error(self, _, exception: Exception):
         await self.commands_logger.error(str(exception))
@@ -79,7 +79,7 @@ class Yadis(commands.Bot):
     async def _log_exception_while_loading_cog(self, e: str, path: str):
         if len(s := e.split(": ")) >= 2:
             e = ": ".join(s[1:])
-        if any(filter(lambda x: x.__name__ in e, error._warnings)):
+        if any(filter(lambda x: x.__name__ in e, error._warnings)):  # type: ignore
             log_func = self.logger.warning
         else:
             log_func = self.logger.error
