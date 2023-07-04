@@ -1,4 +1,4 @@
-<h2 style="margin: auto; width: 10%;"> Guild </h2>
+<h2 style="margin: auto; width: 9%;"> Guild </h2>
 
 | name | type | null | other | desctiption |
 | :-: | :-: | :-: | :-: | :-: |
