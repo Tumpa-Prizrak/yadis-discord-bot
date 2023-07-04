@@ -1,6 +1,6 @@
 import colorama
-import discord
 from dataclasses import dataclass
+from discord import Color
 
 
 @dataclass
@@ -37,26 +37,26 @@ class Colors:
 
 
 def to_dscolor(color: colorama.Fore):  # type: ignore
-    """Convert a colorama Fore color to a discord.Color.
+    """Convert a colorama Fore color to a Color.
 
     Args:
         color (colorama.Fore): The colorama Fore color to convert.
 
     Returns:
-        discord.Color: The equivalent discord.Color.
+        Color: The equivalent Color.
     """
-    return color_map.get(color, discord.Color.green())
+    return color_map.get(color, Color.green())
 
 
 color_map = {
-    colorama.Fore.RED: discord.Color.red(),
-    colorama.Fore.GREEN: discord.Color.green(),
-    colorama.Fore.YELLOW: discord.Color.gold(),
-    colorama.Fore.BLUE: discord.Color.blue(),
-    colorama.Fore.MAGENTA: discord.Color.purple(),
-    colorama.Fore.CYAN: discord.Color.teal(),
-    colorama.Fore.WHITE: discord.Color.from_rgb(255, 255, 255),
-    colorama.Fore.BLACK: discord.Color.from_rgb(0, 0, 0),
+    colorama.Fore.RED: Color.red(),
+    colorama.Fore.GREEN: Color.green(),
+    colorama.Fore.YELLOW: Color.gold(),
+    colorama.Fore.BLUE: Color.blue(),
+    colorama.Fore.MAGENTA: Color.purple(),
+    colorama.Fore.CYAN: Color.teal(),
+    colorama.Fore.WHITE: Color.from_rgb(255, 255, 255),
+    colorama.Fore.BLACK: Color.from_rgb(0, 0, 0),
 }
 
 verson = Version(0, 0, 1, True, False)

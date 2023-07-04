@@ -1,14 +1,14 @@
-import discord
-from discord.ext import commands
 from src.models.bot import Yadis
 from src.models.ui.view import settings
+from discord.ext.commands import Cog
+from discord import app_commands, Interaction
 
-class SetupCog(commands.Cog):
+class SetupCog(Cog):
     def __init__(self, client: Yadis) -> None:
         self.client = client
     
-    @discord.app_commands.command(name="settings", description="Set up your server personally!")
-    async def settings(self, interaction: discord.Interaction):
+    @app_commands.command(name="settings", description="Set up your server personally!")
+    async def settings(self, interaction: Interaction):
         """
             Embed (With buttons | dropdown):
                 - Category1:

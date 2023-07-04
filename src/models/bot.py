@@ -1,13 +1,13 @@
-import discord
-from discord.ext import commands
+from discord.ext.commands import Bot
 from typing import Optional
 from src import custom_logs
 from asyncio import run as async_run
 from os import listdir
 from src.models import error
+from discord import Intents
 
 
-class Yadis(commands.Bot):
+class Yadis(Bot):
     def __init__(
         self,
         debug_channel_id: int,
@@ -21,7 +21,7 @@ class Yadis(commands.Bot):
             case_insensitive=False,
             strip_after_prefix=True,
             help_command=None,
-            intents=discord.Intents(intents),
+            intents=Intents(intents),
             *args,
             **kwargs,
         )
