@@ -42,7 +42,9 @@ class DatabaseConnection:
             error.ConnetionClosed: If the connection is closed.
         """
         ...
-    def write(self, query: str, *args, log_errors: bool = True, raise_errors: bool = False) -> bool:
+    def write(
+        self, query: str, *args, log_errors: bool = True, raise_errors: bool = False
+    ) -> bool:
         """Execute a write query on the database.
 
         Args:

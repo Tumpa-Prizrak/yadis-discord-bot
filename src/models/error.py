@@ -1,7 +1,3 @@
-from discord import errors
-from discord.ext.commands import errors as commands_errors
-
-
 class NotOfficial(Warning):
     """A warning raised when an unofficial Bot is used."""
 

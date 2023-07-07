@@ -1,8 +1,10 @@
-from discord.ext import commands
 import time
+
+from discord import TextChannel
+from discord.ext import commands
+
+from src import config, custom_logs
 from src.config import pyconfig
-from src import config
-from src import custom_logs
 from src.models import error
 from src.models.ui import view
 
@@ -17,10 +19,10 @@ class Cog(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         try:
-            channel = self.client.get_channel(self.bot_config["state_channel_id"])
+            channel: TextChannel = self.client.get_channel(self.bot_config["state_channel_id"])  # type: ignore
             await channel.purge()
             await channel.send(
-                view=view.StateView(timeout=None),
+                view=view.state.StateView(timeout=None),
                 content="**Eng:** Press button to check bot state. If bot is offline you'll get interaction error\n"
                 "**Rus:** Нажмите кнопку, чтобы проверить состояние бота. Если бот не в сети, вы получите ошибку взаимодействия",
             )

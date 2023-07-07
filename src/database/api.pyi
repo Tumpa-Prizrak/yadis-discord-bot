@@ -5,7 +5,7 @@ import discord
 from typing import Optional
 from src.models.bot import Yadis
 
-async def getGuild(
+async def get_guild(
     bot: Yadis,
     *,
     owner: Optional[discord.User | int],

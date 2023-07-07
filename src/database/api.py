@@ -1,16 +1,19 @@
-from src.database.tools import DatabaseConnection
+from typing import Optional, Union
+
+from discord import Guild as dGuild
+from discord import NotFound, User
+
 from src.database.enums import DBFormat
-from src.models import discord as discordModels
-import discord
-from typing import Optional
+from src.database.tools import DatabaseConnection
 from src.models.bot import Yadis
+from src.models.discord import Guild
 
 
 async def get_guild(
     bot: Yadis,
     *,
-    owner: Optional[discord.User | int],
-    guild: Optional[int | discord.Guild]
+    owner: Optional[Union[User, int]] = None,
+    guild: Optional[Union[dGuild, int]] = None
 ):
     if owner is not None and guild is not None:
         raise ValueError("You must specify either owner or guild")
@@ -24,24 +27,24 @@ async def get_guild(
         raise ValueError("You must specify either owner or guild")
 
     voice_channel = await _get_voice_channel(bot, guild)
-    return discordModels.Guild.fromGuild(guild, voice_channel)  # type: ignore
+    return DiscordModels.Guild(guild, voice_channel)  # type: ignore
 
 
-async def add_guild(guild: discord.Guild | discordModels.Guild):
-    if isinstance(guild, discord.Guild):
-        guild = discordModels.Guild.fromGuild(guild, None)
+async def add_guild(guild: Union[dGuild, Guild]):
+    if isinstance(guild, dGuild):
+        guild = Guild(guild, None)
     await _add_guild(guild)
 
 
-async def _add_guild(guild: discordModels.Guild):
+async def _add_guild(guild: Guild):
     with DatabaseConnection() as db:
         db.write(
             "INSERT INTO Guild (guild_id, name, owner, custom_voice_entery_id, member_count) VALUES (?, ?, ?, ?, ?)",
-            guild.id,
-            guild.name,
-            guild.owner_id,
-            guild.custom_voice_entery and guild.custom_voice_entery.id,
-            guild.member_count,
+            guild.id,  # type: ignore
+            guild.name,  # type: ignore
+            guild.owner_id,  # type: ignore
+            guild.custom_voice_entery and guild.custom_voice_entery.id,  # type: ignore
+            guild.member_count,  # type: ignore
         )
 
 
@@ -77,6 +80,6 @@ async def _get_voice_channel(bot, guild):
         db_data = db.read("SELECT * FROM guild WHERE guild_id=?", guild.id, mode=DBFormat.One)  # type: ignore
     try:
         voice_channel = await bot.fetch_channel(db_data[4])
-    except discord.NotFound:
+    except NotFound:
         voice_channel = None
     return voice_channel

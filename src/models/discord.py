@@ -1,29 +1,15 @@
-import discord
-from typing import Optional
+import typing
+
+from discord import Guild as dGuild
+from discord import VoiceChannel
 
 
-class Guild(discord.Guild):
-    custom_voice_entery: Optional[discord.VoiceChannel]
+class Guild:
+    custom_voice_entry: typing.Optional[VoiceChannel]
+    guild: dGuild
 
-    @classmethod
-    def fromGuild(
-        cls,
-        guild: discord.Guild,
-        custom_voice_entery: Optional[discord.VoiceChannel] = None,
-    ):
-        """Construct a Guild object from a discord.Guild.
-
-        Args:
-            guild (discord.Guild): The discord.Guild to construct from.
-            custom_voice_entery (Optional[discord.VoiceChannel], optional): The custom voice channel. Defaults to None.
-
-        Returns:
-            Guild: The constructed Guild object.
-        """
-        # TODO rewrite
-        obj = cls(data=guild.)
-        obj.roles = guild.roles
-        obj.channels = guild.channels
-        obj.members = guild.members
-        obj.custom_voice_entery = custom_voice_entery
-        return obj
+    def __init__(
+        self, guild: dGuild, custom_voice_entry: typing.Optional[VoiceChannel] = None
+    ) -> None:
+        self.custom_voice_entry = custom_voice_entry
+        self.guild = guild

@@ -84,4 +84,4 @@ class Logger:
         log, level_color=colorama.Fore.LIGHTYELLOW_EX, level="WARNING"
     )
     info = partialmethod(log, level_color=colorama.Fore.LIGHTGREEN_EX, level="INFO")
-    sucsess = partialmethod(log, level_color=colorama.Fore.GREEN, level="SUCSESS")
+    success = partialmethod(log, level_color=colorama.Fore.GREEN, level="SUCCESS")

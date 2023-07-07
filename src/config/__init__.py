@@ -1,6 +1,6 @@
-from enum import Enum
 import json
-from typing import Any
+from enum import Enum
+from typing import Any, Union
 
 from src.config import pyconfig
 
@@ -12,7 +12,7 @@ class Configs(Enum):
     logger = "src/config/logger.json"
 
 
-def load_config(file: Configs | str) -> dict[str, Any]:
+def load_config(file: Union[Configs, str]) -> dict:
     """Load a config file.
 
     Args:
