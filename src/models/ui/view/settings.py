@@ -11,7 +11,6 @@ from discord.partial_emoji import PartialEmoji
 class MainView(ui.View):
     def __init__(self):
         super().__init__(timeout=180)
-        pass
 
     async def on_timeout(self) -> None:
         pass

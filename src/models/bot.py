@@ -7,6 +7,7 @@ from discord.ext.commands import Bot
 
 from src import custom_logs
 from src.models import error
+from src.database.tools import GenerateDatabase  # type: ignore
 
 
 class Yadis(Bot):
@@ -31,6 +32,7 @@ class Yadis(Bot):
         self.debug_channel = self.get_channel(debug_channel_id)
         self.logger = custom_logs.Logger("Bot", self)
         self.commands_logger = custom_logs.Logger("Commands", self)
+        GenerateDatabase()
 
     async def on_ready(self):
         await self.logger.success("Ready!", to_file=False)
@@ -61,7 +63,7 @@ class Yadis(Bot):
         print("[END] Cogs\n")
 
         print("Events")
-        for cog in listdir(f"src/events/"):
+        for cog in listdir("src/events/"):
             await self._load_cog(f"src.events.{cog[:-3]}")
         print("[END] Events\n")
 

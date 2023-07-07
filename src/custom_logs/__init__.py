@@ -6,6 +6,7 @@ from typing import Optional
 import colorama
 from discord import Embed
 from discord.ext.commands import Bot
+from src.models.config import Logger as logger, BotInfo
 
 from src import config
 
@@ -19,9 +20,10 @@ class Logger:
         self.bot = bot
 
     def format(self, level: str, message: str, level_color: Optional[colorama.Fore] = None):  # type: ignore
-        return log_data.get("log_format", "").format(
+        assert isinstance(log_data, logger)
+        return log_data.log_format.format(
             **{
-                "dt": datetime.datetime.now().strftime(log_data.get("dt_format", "")),
+                "dt": datetime.datetime.now().strftime(log_data.dt_format),
                 "source": self.source,
                 "level": level,
                 "message": message,
@@ -47,7 +49,8 @@ class Logger:
 
     @staticmethod
     def get_file():
-        return f'logs/{datetime.datetime.now().strftime(log_data.get("filename_format", ""))}'
+        assert isinstance(log_data, logger)
+        return f'logs/{datetime.datetime.now().strftime(log_data.filename_format)}'
 
     def write_to_file(self, level: str, message: str):
         path = self.get_file()
@@ -68,6 +71,7 @@ class Logger:
         to_file: bool = True,
         to_channel: bool = True,
     ):
+        assert isinstance(bot_info, BotInfo)
         print(self.format(level, message, level_color))
         if to_file:
             self.write_to_file(level, message)
@@ -78,7 +82,7 @@ class Logger:
                 )
             except AttributeError:
                 await self.error(
-                    message=f"Channel {bot_info.get('debug_channel_id')} is not found",
+                    message=f"Channel {bot_info.debug_channel_id} is not found",
                     to_channel=False,
                 )
 
