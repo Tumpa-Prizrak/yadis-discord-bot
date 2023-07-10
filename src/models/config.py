@@ -3,18 +3,20 @@ from typing import List
 
 
 @dataclass
-class Database():
+class Database:
     database_path: str
     database_schema: str
 
+
 @dataclass
-class Logger():
+class Logger:
     log_format: str
     dt_format: str
     filename_format: str
 
+
 @dataclass
-class BotInfo():
+class BotInfo:
     token: str
     appid: int
     prefix: str

@@ -17,20 +17,16 @@ class MainView(ui.View):
 
 
 class TopLevelButton(ui.Button):
-    def __init__(
-        self,
-        category: str,
-        message: Message
-    ):
+    def __init__(self, category: str, message: Message):
         super().__init__(
             style=ButtonStyle.secondary,
             label=category,
             disabled=False,
             custom_id=None,
             url=None,
-            emoji='📁',
+            emoji="📁",
             row=None,
         )
-    
+
     async def callback(self, interaction: Interaction):
         pass

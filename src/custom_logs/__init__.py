@@ -50,7 +50,7 @@ class Logger:
     @staticmethod
     def get_file():
         assert isinstance(log_data, logger)
-        return f'logs/{datetime.datetime.now().strftime(log_data.filename_format)}'
+        return f"logs/{datetime.datetime.now().strftime(log_data.filename_format)}"
 
     def write_to_file(self, level: str, message: str):
         path = self.get_file()

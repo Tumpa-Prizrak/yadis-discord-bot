@@ -14,7 +14,9 @@ class Configs(Enum):
     database = "src/config/database.json", config.Database
 
 
-def load_config(file: Union[Configs, str]) -> Dict[Any, Any] | config.BotInfo | config.Database | config.Logger:
+def load_config(
+    file: Union[Configs, str]
+) -> Dict[Any, Any] | config.BotInfo | config.Database | config.Logger:
     """Load a config file.
 
     Args:

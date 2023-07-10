@@ -3,7 +3,7 @@ from discord.ext.commands import Bot, Cog
 
 from src.database import api
 from src.models.bot import Yadis
-from src.models.discord import Guild
+from models.discord.guild import Guild
 
 
 class EventsCog(Cog):

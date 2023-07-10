@@ -6,7 +6,7 @@ from discord import NotFound, User
 from src.database.enums import DBFormat
 from src.database.tools import DatabaseConnection
 from src.models.bot import Yadis
-from src.models.discord import Guild
+from models.discord.guild import Guild
 
 
 async def get_guild(
@@ -27,28 +27,27 @@ async def get_guild(
         raise ValueError("You must specify either owner or guild")
 
     voice_channel = await _get_voice_channel(bot, guild)
-    return DiscordModels.Guild(guild, voice_channel)  # type: ignore
+    return Guild(guild, voice_channel)  # type: ignore
 
 
 async def add_guild(guild: Union[dGuild, Guild]):
     if isinstance(guild, dGuild):
-        guild = Guild(guild, None)
+        guild = Guild(guild, False, None)
     await _add_guild(guild)
 
 
 async def _add_guild(guild: Guild):
     with DatabaseConnection() as db:
         db.write(
-            "INSERT INTO Guild (guild_id, name, owner, custom_voice_entery_id, member_count) VALUES (?, ?, ?, ?, ?)",
-            guild.id,  # type: ignore
-            guild.name,  # type: ignore
-            guild.owner_id,  # type: ignore
-            guild.custom_voice_entery and guild.custom_voice_entery.id,  # type: ignore
-            guild.member_count,  # type: ignore
+            "INSERT INTO Guild (guild_id, owner, custom_voice_entery_id, is_blacklisted) VALUES (?, ?, ?, ?)",
+            guild.guild.id,
+            guild.guild.owner_id,
+            guild.custom_voice_entry.id if guild.custom_voice_entry is not None else None,
+            guild.is_blacklisted
         )
 
 
-async def _resolve_user(bot, user_id):
+async def _resolve_user(bot: Yadis, user_id):
     if isinstance(user_id, int):
         user = await bot.fetch_user(user_id)
         if user is None:
@@ -58,7 +57,7 @@ async def _resolve_user(bot, user_id):
     return user
 
 
-async def _get_guild_by_owner(bot, owner):
+async def _get_guild_by_owner(bot: Yadis, owner):
     with DatabaseConnection() as db:
         db_data = db.read("SELECT * FROM guild WHERE owner = ?", owner.id, mode=DBFormat.One)  # type: ignore
         if not db_data:
@@ -72,10 +71,7 @@ async def _resolve_guild(bot, guild_id):
     )
 
 
-async def _get_voice_channel(bot, guild):
-    """
-    И тут доки
-    """
+async def _get_voice_channel(bot: Yadis, guild):
     with DatabaseConnection() as db:
         db_data = db.read("SELECT * FROM guild WHERE guild_id=?", guild.id, mode=DBFormat.One)  # type: ignore
     try:

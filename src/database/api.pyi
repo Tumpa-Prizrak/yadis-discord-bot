@@ -1,6 +1,6 @@
 from src.database.tools import DatabaseConnection
 from src.database.enums import DBFormat
-from src.models import discord as discordModels
+from models.discord import guild as discordModels
 import discord
 from typing import Optional
 from src.models.bot import Yadis

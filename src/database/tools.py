@@ -17,7 +17,7 @@ class DatabaseWraper:
         self.database_name = database_name
         self.cursor = None
         self.connection = None
-    
+
     def __enter__(self):
         self.open()
         return self
@@ -40,7 +40,7 @@ class DatabaseWraper:
 
         self.cursor = self.cursor.close()
         self.connection = self.connection.close()
-    
+
     def execute(self, query: str, params: tuple) -> list:
         assert self.cursor is not None
 
@@ -104,13 +104,12 @@ def GenerateDatabase():
 
     if os.path.exists(config.database_path):
         return
-    
+
     with open(config.database_path, "rb") as f:
         if f.read() != b"":
             return
-    
-    with DatabaseWraper(config.database_path) as dbw, \
-    open(config.database_schema) as f:
+
+    with DatabaseWraper(config.database_path) as dbw, open(config.database_schema) as f:
         assert dbw.cursor is not None
         assert dbw.connection is not None
 

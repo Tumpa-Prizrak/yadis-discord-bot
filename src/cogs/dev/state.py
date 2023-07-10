@@ -11,7 +11,6 @@ from src.models.ui import view
 
 class Cog(commands.Cog):
     def __init__(self, client: commands.Bot):
-        
         self.client = client
         self.logger = custom_logs.Logger("State", client)
         self.bot_config = config.load_config(config.Configs.bot_info)
@@ -30,6 +29,7 @@ class Cog(commands.Cog):
         await channel.send(
             content=f"**Eng: Bot started at <t:{now}>(<t:{now}:R>)\nRus: Бот запущен в <t:{now}>(<t:{now}:R>)**"
         )
+
 
 async def setup(bot: commands.Bot):
     if pyconfig.verson.official:
