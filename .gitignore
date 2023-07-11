@@ -167,4 +167,3 @@ poetry.lock
 pyproject.toml
 
 src/database/*.db
-.vscode/

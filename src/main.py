@@ -21,3 +21,18 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+
+from bot.yadis import Yadis
+from models.config import load_config, Configs
+from models.dataclasses.config import BotInfo
+from discord import Intents
+
+bot_info: BotInfo = load_config(Configs.bot_info)  # type: ignore
+
+bot = Yadis(
+    command_prefix=bot_info.prefix,
+    intents=Intents(bot_info.intents),
+    token=bot_info.token,
+)
+
+bot.run()
