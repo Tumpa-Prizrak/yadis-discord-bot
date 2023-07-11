@@ -21,28 +21,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-
-from asyncio import run
-
-import colorama
-from discord import Intents
-
-from src import config, custom_logs
-from src.models.bot import Yadis
-
-
-colorama.init()
-bot_info = config.load_config(config.Configs.bot_info)
-
-
-log = custom_logs.Logger("Main")
-run(log.info(message="Loading...", to_channel=False, to_file=False))
-
-bot = Yadis(
-    token=bot_info.token,  # type: ignore
-    owner_ids=bot_info.owners,  # type: ignore
-    debug_channel_id=bot_info.debug_channel_id,  # type: ignore
-    intents=bot_info.intents,  # type: ignore
-)
-
-bot.run()
