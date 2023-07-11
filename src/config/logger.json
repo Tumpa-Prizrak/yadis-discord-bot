@@ -1,5 +1,0 @@
-{
-    "log_format": "{dt_color}[{dt}]{reset} {source_color}{source}{reset} {level_color}{level}{reset} {message}",
-    "dt_format": "%d.%b.%Y %H:%M:%S",
-    "filename_format": "%d-%b-%Y.log"
-}

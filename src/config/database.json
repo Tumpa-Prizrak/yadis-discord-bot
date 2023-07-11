@@ -1,4 +1,0 @@
-{
-    "database_path": "src/database/database.db",
-    "database_schema": "src/database/databaseSchema.sql"
-}
