@@ -1,0 +1,11 @@
+{
+    "material-icon-theme.folders.associations": {
+        "bot": "core",
+        "cogs": "container",
+        "venv": "environment"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.formatting.provider": "none"
+}

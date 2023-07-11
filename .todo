@@ -18,7 +18,7 @@
 
 - More custom models
 - - discord.Member
-- - discord.Guild (FIX)
+- - discord.Guild
 - - discord.Role
 - - discord.VoiceChannel
 - - discord.TextChannel
