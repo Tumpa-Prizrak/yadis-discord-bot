@@ -27,7 +27,7 @@ async def get_guild(
         raise ValueError("You must specify either owner or guild")
 
     voice_channel = await _get_voice_channel(bot, guild)
-    return Guild(guild, voice_channel)  # type: ignore
+    return Guild(guild, voice_channel)
 
 
 async def add_guild(guild: Union[dGuild, Guild]):
@@ -57,23 +57,23 @@ async def _resolve_user(bot: Yadis, user_id):
     return user
 
 
-async def _get_guild_by_owner(bot: Yadis, owner):
+async def _get_guild_by_owner(bot: Yadis, owner: User):
     with DatabaseConnection() as db:
-        db_data = db.read("SELECT * FROM guild WHERE owner = ?", owner.id, mode=DBFormat.One)  # type: ignore
+        db_data = db.read("SELECT * FROM guild WHERE owner = ?", owner.id, mode=DBFormat.One)
         if not db_data:
             raise ValueError("Guild not found in the database. You should add it first")
     return await bot.fetch_guild(db_data[1])
 
 
-async def _resolve_guild(bot, guild_id):
+async def _resolve_guild(bot: Yadis, guild_id: int):
     return (  # I love sourcery (no)
         await bot.fetch_guild(guild_id) if isinstance(guild_id, int) else guild_id
     )
 
 
-async def _get_voice_channel(bot: Yadis, guild):
+async def _get_voice_channel(bot: Yadis, guild: dGuild | int):
     with DatabaseConnection() as db:
-        db_data = db.read("SELECT * FROM guild WHERE guild_id=?", guild.id, mode=DBFormat.One)  # type: ignore
+        db_data = db.read("SELECT * FROM guild WHERE guild_id=?", guild.id if isinstance(guild, dGuild) else guild, mode=DBFormat.One)
     try:
         voice_channel = await bot.fetch_channel(db_data[4])
     except NotFound:
