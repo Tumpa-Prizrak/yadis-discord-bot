@@ -1,12 +1,11 @@
-from discord.ext.commands import Bot
+from discord.ext.commands import Bot  # type: ignore
 from discord import Intents
-from api.logger import setup_logger, get_file_formatter, get_file_handler
-from logging import Logger, INFO
-
+from logging import Logger, getLogger
+from typing import Dict, Tuple, Any
 
 class Yadis(Bot):
     def __init__(
-        self, command_prefix: str, intents: Intents, token: str, *args, **kwargs
+        self, command_prefix: str, intents: Intents, token: str, *args: Tuple[Any], **kwargs: Dict[str, Any]
     ) -> None:
         super().__init__(
             command_prefix,
@@ -17,17 +16,16 @@ class Yadis(Bot):
             **kwargs,
         )
         self.token: str = token
-        self.logger: Logger = setup_logger()
+        self.logger: Logger = getLogger("discord.bot")
 
-    async def on_ready(self):
-        self.logger.info(f"Bot is ready! latency: {round(self.latency, 4)}")
+    async def on_ready(self) -> None:
+        self.logger.info(f"Bot is ready! latency: {round(self.latency, 3)}")
 
-    def run(self, token: str | None = None) -> None:
+    def run(self, token: str | None = None) -> None:  # type: ignore
         super().run(
             token or self.token,
-            reconnect=True,
-            log_level=INFO,  # FIXME: several logging
-            log_handler=get_file_handler(),
-            log_formatter=get_file_formatter(),
-            root_logger=True,
+            reconnect=True
         )
+    
+    def getLogger(self):
+        pass

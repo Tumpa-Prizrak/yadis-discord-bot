@@ -1,0 +1,32 @@
+CREATE TABLE guild (
+    rowid       INTEGER PRIMARY KEY AUTOINCREMENT,
+    discord_id  INTEGER UNIQUE
+                        NOT NULL,
+    owner_id    INTEGER NOT NULL,
+    blacklisted INTEGER DEFAULT (0) 
+                        NOT NULL
+);
+CREATE TABLE settings (
+    rowid               INTEGER PRIMARY KEY AUTOINCREMENT,
+    discord_id          INTEGER UNIQUE
+                                NOT NULL,
+    blacklisted         TEXT    DEFAULT ""
+                                NOT NULL,
+    custom_voice_entery INTEGER UNIQUE
+                                NOT NULL
+                                DEFAULT (0),
+    welcome_channel     INTEGER NOT NULL
+                                DEFAULT (0) 
+                                UNIQUE,
+    welcome_messages    TEXT    NOT NULL
+                                DEFAULT "",
+    veref_role          INTEGER NOT NULL
+                                DEFAULT (0) 
+                                UNIQUE,
+    mod_roles           TEXT    NOT NULL
+                                DEFAULT ""
+                                UNIQUE,
+    admin_roles         TEXT    NOT NULL
+                                DEFAULT ""
+                                UNIQUE
+);
