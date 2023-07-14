@@ -1,6 +1,6 @@
 from bot.yadis import Yadis
 from models.config import load_config, Configs
-from models.dataclasses.config import BotInfo
+from models.dataclasses import BotInfo
 from discord import Intents
 
 bot_info: BotInfo = load_config(file=Configs.bot_info)  # type: ignore

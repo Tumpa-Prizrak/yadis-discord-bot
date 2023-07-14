@@ -2,10 +2,10 @@
 * [ ] Commands counter
 * [ ] Info commands
 * [ ] Temp channels
-* [ ] Logging (Owner: @Lapppse)
+* [X] ~~*Logging*~~ [2023-07-15]
 
 - Settings
-* [ ] Blacklist
+* [ ] Blacklist (depends on "Blacklist")
 * [ ] Temp voice entery
 * [ ] Welcome channel id
 * [ ] Welcome role
@@ -56,8 +56,7 @@
 
 - Fun commands
 * [ ] Meme
-* [ ] Cat
-* [ ] Dog
+* [ ] Animal
 * [ ] Joke
 * [ ] Inspire
 * [ ] Fortune

@@ -2,16 +2,17 @@ import json
 from enum import Enum
 from typing import Any, Union, Dict
 
-from models.dataclasses import config
+from models import dataclasses
 
 
 class Configs(Enum):
     """Enum representing the available config files."""
 
-    bot_info = "models/config/bot_info.json", config.BotInfo
+    bot_info = "models/config/bot_info.json", dataclasses.BotInfo
+    database = "models/config/database.json", dataclasses.Database
 
 
-def load_config(file: Union[Configs, str]) -> Dict[Any, Any] | config.BotInfo:
+def load_config(file: Union[Configs, str]) -> Dict[Any, Any] | dataclasses.BotInfo | dataclasses.Database:
     """Load a config file.
 
     ### Args:
