@@ -2,13 +2,12 @@
 * [ ] Commands counter
 * [ ] Info commands
 * [ ] Temp channels
+* [ ] Logging (Owner: @Lapppse)
 
 - Settings
-* [ ] Prefix 
 * [ ] Blacklist
 * [ ] Temp voice entery
 * [ ] Welcome channel id
-* [ ] Welcome message
 * [ ] Welcome role
 * [ ] Moderation role
 * [ ] Admin role
