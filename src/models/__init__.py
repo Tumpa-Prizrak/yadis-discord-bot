@@ -1,2 +1,3 @@
-from models import config
-from models import dataclasses
+from models import config  # type: ignore
+from models import dataclasses  # type: ignore
+from models import error  # type: ignore

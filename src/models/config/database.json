@@ -1,0 +1,4 @@
+{
+    "database_path": "database/database.db",
+    "database_schema": "database/databaseSchema.sqlite"
+}

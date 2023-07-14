@@ -1,7 +1,8 @@
 from discord.ext.commands import Bot  # type: ignore
 from discord import Intents
-from logging import Logger, getLogger
 from typing import Dict, Tuple, Any
+from logging import Logger
+from api import logger
 
 class Yadis(Bot):
     def __init__(
@@ -16,7 +17,7 @@ class Yadis(Bot):
             **kwargs,
         )
         self.token: str = token
-        self.logger: Logger = getLogger("discord.bot")
+        self.logger: Logger = logger.setup_logger()
 
     async def on_ready(self) -> None:
         self.logger.info(f"Bot is ready! latency: {round(self.latency, 3)}")
@@ -26,6 +27,3 @@ class Yadis(Bot):
             token or self.token,
             reconnect=True
         )
-    
-    def getLogger(self):
-        pass
