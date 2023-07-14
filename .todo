@@ -1,119 +1,118 @@
-- Blacklist
-- Commands counter
-- Info commands
-- Temp channels
+* [ ] Blacklist
+* [ ] Commands counter
+* [ ] Info commands
+* [ ] Temp channels
 
 - Settings
-- - Prefix 
-- - Blacklist
-- - Temp voice entery
-- - Welcome channel id
-- - Welcome message
-- - Welcome role
-- - Moderation role
-- - Admin role
-- - Welcome messages
+* [ ] Prefix 
+* [ ] Blacklist
+* [ ] Temp voice entery
+* [ ] Welcome channel id
+* [ ] Welcome message
+* [ ] Welcome role
+* [ ] Moderation role
+* [ ] Admin role
+* [ ] Welcome messages
 
 <br>
 
 - More custom models
-- - discord.Member
-- - discord.Guild
-- - discord.Role
-- - discord.VoiceChannel
-- - discord.TextChannel
-- - discord.Message
-- - discord.Invite
-- - discord.Emoji
+* [ ] discord.Member
+* [ ] discord.Guild
+* [ ] discord.Role
+* [ ] discord.VoiceChannel
+* [ ] discord.TextChannel
+* [ ] discord.Message
+* [ ] discord.Invite
+* [ ] discord.Emoji
 
 <br>
 
-- Custom permissions
+* [ ] Custom permissions
 (Custom permissions for roles such as mod perms, setting perms, etc.)
 
 <br>
 
 - Logging system (discord)
-- - Join / leave logs
-- - Command usage logs
-- - Mod action logs
-- - Edit message logs
-- - Edit channel logs
-- - Voice logs
-- - Edit role logs
-- - Edit user logs
+* [ ] Join / leave logs
+* [ ] Command usage logs
+* [ ] Mod action logs
+* [ ] Edit message logs
+* [ ] Edit channel logs
+* [ ] Voice logs
+* [ ] Edit role logs
+* [ ] Edit user logs
 
 <br>
 
 - Moderation commands
-- - Kick
-- - Ban
-- - Softban
-- - Mute
-- - Warn (perms? deleting?)
-- - Clear messages (purge)
+* [ ] Kick
+* [ ] Ban
+* [ ] Softban
+* [ ] Mute
+* [ ] Warn (perms? deleting?)
+* [ ] Clear messages (purge)
 
 <br>
 
 - Fun commands
-- - Meme
-- - Cat
-- - Dog
-- - Joke
-- - Inspire
-- - Fortune
+* [ ] Meme
+* [ ] Cat
+* [ ] Dog
+* [ ] Joke
+* [ ] Inspire
+* [ ] Fortune
 
 <br>
 
 - Economic system
-- - Balance
-- - Bank
-- - Withdraw
-- - Deposit
-- - Work (job system)
-- - Pay (give money)
-- - Beg ( xD )
-- - Leaderboard
-- - Shop
-- - Buy
-- - Rob
-- - Slots
-- - Daily reward
+* [ ] Balance
+* [ ] Bank
+* [ ] Withdraw
+* [ ] Deposit
+* [ ] Work (job system)
+* [ ] Pay (give money)
+* [ ] Beg ( xD )
+* [ ] Leaderboard
+* [ ] Shop
+* [ ] Buy
+* [ ] Rob
+* [ ] Slots
+* [ ] Daily reward
 
 <br>
 
 - Music commands
-- - Play
-- - Pause
-- - Resume
-- - Skip
-- - Queue 
-- - Now Playing
-- - Volume
-- - Repeat
-- - Seek
-- - Remove
+* [ ] Play
+* [ ] Pause
+* [ ] Resume
+* [ ] Skip
+* [ ] Queue 
+* [ ] Now Playing
+* [ ] Volume
+* [ ] Repeat
+* [ ] Seek
+* [ ] Remove
 
 <br>
 
 - Other commands
-- - Profile
-- - Avatar
-- - Nickname(s) (??)
-- - Invite counter
+* [ ] Profile
+* [ ] Avatar
+* [ ] Nickname(s) (??)
+* [ ] Invite counter
 
 <br>
 
 - Auto role assigner
-- - Assign roles based on reactions
-- - Assign roles based on joining/leaving voice channels
-- - Assign roles based on sending a certain message
-- - Assign roles based on joining the server
-- - Assign roles based on member count
-- - Custom role assigner (admin panel)
+* [ ] Assign roles based on reactions
+* [ ] Assign roles based on joining/leaving voice channels
+* [ ] Assign roles based on sending a certain message
+* [ ] Assign roles based on joining the server
+* [ ] Assign roles based on member count
+* [ ] Custom role assigner (admin panel)
 
 <br>
 
-- Custom events
-- Custom slash commands
-
+* [ ]  Custom events
+* [ ]  Custom slash commands
