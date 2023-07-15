@@ -41,12 +41,10 @@ class DatabaseWraper:
 
     def execute(self, query: str, params: Tuple[Any]) -> List[Any]:
         if self._is_closed():
-            raise ConnectionClosed(
-                "Connection closed. You must use .open() first"
-            )
+            raise ConnectionClosed("Connection closed. You must use .open() first")
 
         assert self.cursor is not None
-        
+
         return self.cursor.execute(query, params).fetchall()
 
     def _is_opened(self) -> bool:
@@ -66,18 +64,18 @@ class DatabaseConnection(DatabaseWraper):
 
     def read(self, query: str, *args: Tuple[Any], mode: DBFormat) -> list[Any] | Any:
         if self._is_closed():
-            raise ConnectionClosed(
-                "Connection closed. You must use .open() first"
-            )
+            raise ConnectionClosed("Connection closed. You must use .open() first")
         return self._format_data(self.execute(query, args), mode)
 
     def write(
-        self, query: str, *args: Tuple[Any], log_errors: bool = True, raise_errors: bool = False
+        self,
+        query: str,
+        *args: Tuple[Any],
+        log_errors: bool = True,
+        raise_errors: bool = False,
     ) -> bool:
         if self._is_closed():
-            raise ConnectionClosed(
-                "Connection closed. You must use .open() first"
-            )
+            raise ConnectionClosed("Connection closed. You must use .open() first")
 
         assert self.connection is not None
 

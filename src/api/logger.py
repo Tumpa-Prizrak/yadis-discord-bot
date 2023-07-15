@@ -16,7 +16,7 @@ def get_file_handler() -> RotatingFileHandler:
         maxBytes=32 * 1024 * 1024,
         backupCount=10,
     )
-    file_handler.setFormatter(get_file_formatter()) 
+    file_handler.setFormatter(get_file_formatter())
     file_handler.setLevel(logging.INFO)
 
     return file_handler

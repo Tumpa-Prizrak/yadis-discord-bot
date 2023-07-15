@@ -6,6 +6,7 @@ class Database:
     database_path: str
     database_schema: str
 
+
 """
 @dataclass
 class Logger:
