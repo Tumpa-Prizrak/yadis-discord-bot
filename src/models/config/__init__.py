@@ -12,7 +12,9 @@ class Configs(Enum):
     database = "models/config/database.json", dataclasses.Database
 
 
-def load_config(file: Union[Configs, str]) -> Dict[Any, Any] | dataclasses.BotInfo | dataclasses.Database:
+def load_config(
+    file: Union[Configs, str]
+) -> Dict[Any, Any] | dataclasses.BotInfo | dataclasses.Database:
     """Load a config file.
 
     ### Args:

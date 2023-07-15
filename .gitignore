@@ -167,3 +167,4 @@ poetry.lock
 pyproject.toml
 
 src/database/*.db
+test.py
