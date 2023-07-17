@@ -1,1 +1,1 @@
-from models.discord_models import guild  # type: ignore
+from models.discord_models.guild import Guild  # type: ignore
