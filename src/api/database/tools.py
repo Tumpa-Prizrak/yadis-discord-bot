@@ -60,9 +60,10 @@ class DatabaseConnection(DatabaseWraper):
 
         if database_name is None:
             database_name = config.database_path
+
         super().__init__(database_name)
 
-    def read(self, query: str, *args: Tuple[Any], mode: DBFormat) -> list[Any] | Any:
+    def read(self, query: str, *args: Any, mode: DBFormat) -> list[Any] | Any:
         if self._is_closed():
             raise ConnectionClosed("Connection closed. You must use .open() first")
         return self._format_data(self.execute(query, args), mode)
@@ -70,7 +71,7 @@ class DatabaseConnection(DatabaseWraper):
     def write(
         self,
         query: str,
-        *args: Tuple[Any],
+        *args: Any,
         log_errors: bool = True,
         raise_errors: bool = False,
     ) -> bool:
@@ -84,19 +85,26 @@ class DatabaseConnection(DatabaseWraper):
             self.connection.commit()
             return True
         except Exception as e:
+            if log_errors:
+                run(self.logger.error(e))  # type: ignore
             if raise_errors:
                 raise e from e
-            elif log_errors:
-                run(self.logger.error(e))  # type: ignore
             return False
 
     def _format_data(self, data: List[Any], mode: DBFormat) -> list[Any] | Any:
-        if mode == DBFormat.Raw or not data:
-            return data
-        elif mode == DBFormat.List:
-            return [x[0] if len(x) == 1 else x for x in data]
-        elif mode == DBFormat.One:
-            return data[0][0] if len(data) == 1 and len(data[0]) == 1 else data[0]
+        match mode:
+            case DBFormat.Raw:
+                return data
+            case DBFormat.One:
+                try:
+                    return data[0][0] if len(data) == 1 and len(data[0]) == 1 else data[0]
+                except IndexError:
+                    return None
+            case DBFormat.List:
+                try:
+                    return [x[0] if len(x) == 1 else x for x in data]
+                except IndexError:
+                    return []
 
 
 def GenerateDatabase():

@@ -1,4 +1,4 @@
 {
-    "database_path": "database/database.db",
-    "database_schema": "database/databaseSchema.sqlite"
+    "database_path": "api/database/sqlitedb.db",
+    "database_schema": "api/database/sqlitedbSchema.sqlite"
 }
