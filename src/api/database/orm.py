@@ -9,9 +9,7 @@ from discord.ext.commands import Bot  # type: ignore
 def get_guild(bot: Bot, guild_id: int) -> Guild | None:
     with tools.DatabaseConnection() as db:
         data = db.read("SELECT * FROM guild WHERE discord_id = ?", guild_id, mode=enums.DBFormat.One)
-        if data is None:
-            return None
-        return Guild(bot, *data)
+        return None if data is None else Guild(bot, *data)
 
 def auto_add_guild(guild: discord.Guild) -> None:
     assert guild.owner_id is not None
@@ -28,9 +26,7 @@ def add_guild(guild_id: int, owner_id: int) -> None:
 def get_settings(bot: Bot, discord_id: int) -> Settings | None:
     with tools.DatabaseConnection() as db:
         data = db.read("SELECT * FROM settings WHERE discord_id = ?", discord_id, mode=enums.DBFormat.One)
-        if data is None:
-            return None
-        return Settings(bot, *data)
+        return None if data is None else Settings(bot, *data)
 
 def add_settings(discord_id: int) -> None:
     with tools.DatabaseConnection() as db:
