@@ -5,17 +5,17 @@ import traceback
 
 async def load_extensions(bot: Bot, extensions_dir: str, extension_prefix: str) -> None:
     """
-    Загружает модули из указанной директории.
+    Loads modules from the specified directory.
     
-    Параметры:
-    - bot: Yadis - бот
-    - extensions_dir: str - директория с модулями
-    - extension_prefix: str - префикс имени модуля
-    - load_path: str - путь для импорта модуля
+    Parameters:
+    - bot: Yadis - bot
+    - extensions_dir: str - directory with modules
+    - extension_prefix: str - module name prefix
+    - load_path: str - path to import the module.
     
-    Загружает модули, имена которых начинаются с extension_prefix и 
-    заканчиваются на .py из директории extensions_dir, импортируя 
-    их относительно load_path.
+    Loads modules, whose names start with extension_prefix and 
+    .py from the extensions_dir directory, importing them relative to load_path. 
+    them relative to load_path.
     """
     load_path = extensions_dir.replace("/", ".")
 
