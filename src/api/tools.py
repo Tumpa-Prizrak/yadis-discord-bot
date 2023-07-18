@@ -4,19 +4,25 @@ import traceback
 
 
 async def load_extensions(bot: Bot, extensions_dir: str, extension_prefix: str) -> None:
-    """
-    Loads modules from the specified directory.
-    
-    Parameters:
-    - bot: Yadis - bot
-    - extensions_dir: str - directory with modules
-    - extension_prefix: str - module name prefix
-    - load_path: str - path to import the module.
-    
-    Loads modules, whose names start with extension_prefix and 
-    .py from the extensions_dir directory, importing them relative to load_path. 
-    them relative to load_path.
-    """
+    """Loads all extensions from the specified directory into the bot.
+
+   :param bot: Bot instance for loading extensions
+   :type bot: Bot
+
+   :param extensions_dir: Path to the directory with extensions
+   :type extensions_dir: str
+
+   :param extension_prefix: Extensions file name prefix
+   :type extension_prefix: str
+
+   For each extension file in the directory, the following is performed:
+
+   1. Loading the extension module
+   2. Call bot.load_extension() to load it
+   3. Logging the result
+
+   Allows to load all extensions from the directory.
+   """
     load_path = extensions_dir.replace("/", ".")
 
     for extension in listdir(extensions_dir):

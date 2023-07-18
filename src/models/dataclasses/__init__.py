@@ -6,21 +6,27 @@ from discord.ext import commands
 
 @dataclass
 class Database:  # Config only
+    """Database Configuration Class.
+
+    Attributes:
+
+    - database_path: The path to the database file 
+    - database_schema: Path to the database schema
+    """
     database_path: str
     database_schema: str
-
-
-"""
-@dataclass
-class Logger:
-    log_format: str
-    dt_format: str
-    filename_format: str
-"""
-
+    
 
 @dataclass
 class BotInfo:  # Config only
+    """Bot Configuration Class.
+
+    Attributes:
+
+    - token: The token of the bot
+    - prefix: Command prefix 
+    - intents: Bot's intentions
+    """
     token: str
     prefix: str
     intents: int
@@ -28,6 +34,20 @@ class BotInfo:  # Config only
 
 @dataclass
 class Settings:  # Database only
+    """Server Settings Class.
+
+    Attributes:
+
+    - rowid: ID of the record in the database
+    - guild: Server object
+    - blacklisted: Blacklist
+    - custom_voice_entery: Login channel
+    - welcome_channel: Welcome channel
+    - welcome_messages: Welcome messages
+    - verification_role: Verification role 
+    - mod_roles: Moderator Roles
+    - admin_roles: Admin roles
+    """
     rowid: int
     guild: discord.Guild
     blacklisted: typing.List[discord.User]
@@ -67,6 +87,15 @@ class Settings:  # Database only
 
 @dataclass
 class Guild:
+    """Server model class.
+
+    Attributes:
+
+    - rowid: The ID of the record in the database
+    - guild: Server object
+    - owner: Server owner
+    - blacklisted: Blacklisted
+    """
     rowid: int
     guild: discord.Guild
     owner: discord.User

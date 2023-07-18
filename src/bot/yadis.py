@@ -8,6 +8,10 @@ from api.tools import load_extensions
 
 
 class Yadis(Bot):
+    """The Yadis bot class inherits from Bot discord.py.
+    
+    Overrides methods to configure and run the bot.
+    """
     def __init__(
         self,
         command_prefix: str,
@@ -16,6 +20,12 @@ class Yadis(Bot):
         *args: Tuple[Any],
         **kwargs: Dict[str, Any],
     ) -> None:
+        """Bot initialisation.
+        
+        :param command_prefix: Command prefix 
+        :param intents: Bot intents
+        :param token: Bot token
+        """
         super().__init__(
             command_prefix,
             help_command=None,
@@ -28,6 +38,10 @@ class Yadis(Bot):
         self.logger: Logger = logger.setup_logger()
     
     async def setup_hook(self) -> None:
+        """Configuring the bot before launching it.
+        
+        Loading command and event extensions.
+        """
         for category in os.listdir("bot/cogs"):
             obj = f"bot/cogs/{category}"
             if os.path.isfile(obj): continue
@@ -38,7 +52,15 @@ class Yadis(Bot):
 
 
     async def on_ready(self) -> None:
+        """Actions at bot startup.
+        
+        Readiness and delay logging.
+        """
         self.logger.info(f"Bot is ready! latency: {round(self.latency, 3)}")
 
     def run(self, token: str | None = None) -> None:  # type: ignore
+        """Bot startup.
+        
+        :param token: Bot token, by default taken from attribute.
+        """
         super().run(token or self.token, reconnect=True)

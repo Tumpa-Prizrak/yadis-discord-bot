@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>api.database package &#8212; Yadis  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/haiku.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="bot package" href="bot.html" />
+    <link rel="prev" title="api package" href="api.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>Yadis  documentation</span></a></h1>
+        <h2 class="heading"><span>api.database package</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="api.html">api package</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="bot.html">bot package</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <section id="api-database-package">
+<h1>api.database package<a class="headerlink" href="#api-database-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-api.database.api">
+<span id="api-database-api-module"></span><h2>api.database.api module<a class="headerlink" href="#module-api.database.api" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="api.database.api.get_guild">
+<span class="sig-prename descclassname"><span class="pre">api.database.api.</span></span><span class="sig-name descname"><span class="pre">get_guild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Bot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guild</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Guild</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="models.discord_models.html#models.discord_models.guild.Guild" title="models.discord_models.guild.Guild"><span class="pre">Guild</span></a></span></span><a class="headerlink" href="#api.database.api.get_guild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a GuildBot object from the database.</p>
+<p>First it tries to find records by guild ID in tables 
+guild and settings.</p>
+<p>If there are no records, it creates them using the functions 
+auto_add_guild and add_settings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bot</strong> (<em>Bot</em>) – Bot instance</p></li>
+<li><p><strong>guild</strong> (<em>discord.Guild</em>) – Discord guild object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>GuildBot object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>discord_models.Guild</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="api.database.api.get_guild_by_id">
+<span class="sig-prename descclassname"><span class="pre">api.database.api.</span></span><span class="sig-name descname"><span class="pre">get_guild_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Bot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guild_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="models.discord_models.html#models.discord_models.guild.Guild" title="models.discord_models.guild.Guild"><span class="pre">Guild</span></a></span></span><a class="headerlink" href="#api.database.api.get_guild_by_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets Guild object by guild ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bot</strong> (<em>Bot</em>) – Bot instance</p></li>
+<li><p><strong>guild_id</strong> (<em>int</em>) – guild ID</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Guild object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>discord_models.Guild</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If guild not found</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="api.database.api.get_guild_by_owner">
+<span class="sig-prename descclassname"><span class="pre">api.database.api.</span></span><span class="sig-name descname"><span class="pre">get_guild_by_owner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Bot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="models.discord_models.html#models.discord_models.guild.Guild" title="models.discord_models.guild.Guild"><span class="pre">Guild</span></a></span></span><a class="headerlink" href="#api.database.api.get_guild_by_owner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a Guild object by owner ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bot</strong> (<em>Bot</em>) – Bot instance</p></li>
+<li><p><strong>owner_id</strong> (<em>int</em>) – Owner ID</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Guild object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>discord_models.Guild</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If guild not found</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-api.database.enums">
+<span id="api-database-enums-module"></span><h2>api.database.enums module<a class="headerlink" href="#module-api.database.enums" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.database.enums.DBFormat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.database.enums.</span></span><span class="sig-name descname"><span class="pre">DBFormat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#api.database.enums.DBFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Listing of database data formatting modes.</p>
+<p>Allows you to specify the required mode when making queries to the database.</p>
+<p>Mode options:</p>
+<ul class="simple">
+<li><p>Raw - Returns the data as is</p></li>
+<li><p>List - Returns a list of values</p></li>
+<li><p>One - Returns a single value</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM table&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">DBFormat</span><span class="o">.</span><span class="n">List</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.database.enums.DBFormat.List">
+<span class="sig-name descname"><span class="pre">List</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#api.database.enums.DBFormat.List" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.database.enums.DBFormat.One">
+<span class="sig-name descname"><span class="pre">One</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#api.database.enums.DBFormat.One" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.database.enums.DBFormat.Raw">
+<span class="sig-name descname"><span class="pre">Raw</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#api.database.enums.DBFormat.Raw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-api.database.orm">
+<span id="api-database-orm-module"></span><h2>api.database.orm module<a class="headerlink" href="#module-api.database.orm" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="api.database.orm.add_guild">
+<span class="sig-prename descclassname"><span class="pre">api.database.orm.</span></span><span class="sig-name descname"><span class="pre">add_guild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">guild_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#api.database.orm.add_guild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a server to the database manually by ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>guild_id</strong> (<em>int</em>) – server ID in Discord</p></li>
+<li><p><strong>owner_id</strong> (<em>int</em>) – server owner ID</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="api.database.orm.add_settings">
+<span class="sig-prename descclassname"><span class="pre">api.database.orm.</span></span><span class="sig-name descname"><span class="pre">add_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">discord_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#api.database.orm.add_settings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an entry to the settings table by discord_id</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>discord_id</strong> (<em>int</em>) – user or server ID</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="api.database.orm.auto_add_guild">
+<span class="sig-prename descclassname"><span class="pre">api.database.orm.</span></span><span class="sig-name descname"><span class="pre">auto_add_guild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">guild</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Guild</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#api.database.orm.auto_add_guild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Automatically adds the server to the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>guild</strong> (<em>discord.Guild</em>) – Discord server object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="api.database.orm.get_guild">
+<span class="sig-prename descclassname"><span class="pre">api.database.orm.</span></span><span class="sig-name descname"><span class="pre">get_guild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Bot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guild_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="models.dataclasses.html#models.dataclasses.Guild" title="models.dataclasses.Guild"><span class="pre">Guild</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#api.database.orm.get_guild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the Guild object by server id in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bot</strong> (<em>Bot</em>) – Bot instance</p></li>
+<li><p><strong>guild_id</strong> (<em>int</em>) – Server ID in Discord</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Guild object or None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="models.discord_models.html#models.discord_models.guild.Guild" title="models.discord_models.guild.Guild">models.discord_models.guild.Guild</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="api.database.orm.get_settings">
+<span class="sig-prename descclassname"><span class="pre">api.database.orm.</span></span><span class="sig-name descname"><span class="pre">get_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Bot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discord_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="models.dataclasses.html#models.dataclasses.Settings" title="models.dataclasses.Settings"><span class="pre">Settings</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#api.database.orm.get_settings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the Settings object by discord_id from the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bot</strong> (<em>Bot</em>) – Bot instance</p></li>
+<li><p><strong>discord_id</strong> (<em>int</em>) – Server ID</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Settings object or None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="models.dataclasses.html#models.dataclasses.Settings" title="models.dataclasses.Settings">Settings</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-api.database.tools">
+<span id="api-database-tools-module"></span><h2>api.database.tools module<a class="headerlink" href="#module-api.database.tools" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.database.tools.DatabaseConnection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.database.tools.</span></span><span class="sig-name descname"><span class="pre">DatabaseConnection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#api.database.tools.DatabaseConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#api.database.tools.DatabaseWraper" title="api.database.tools.DatabaseWraper"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatabaseWraper</span></code></a></p>
+<p>A class for working with database connection.</p>
+<p>Inherits from DatabaseWrapper and adds methods
+for reading and writing data to the database.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">With</span> <span class="n">DatabaseConnection</span><span class="p">(</span><span class="s1">&#39;data.db&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;INSERT INTO table VALUES (?)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM table&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">DBFormat</span><span class="o">.</span><span class="n">List</span><span class="p">))</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.database.tools.DatabaseConnection.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#api.database.enums.DBFormat" title="api.database.enums.DBFormat"><span class="pre">DBFormat</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Any</span></span></span><a class="headerlink" href="#api.database.tools.DatabaseConnection.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a query to read data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>str</em>) – SQL query text</p></li>
+<li><p><strong>args</strong> (<em>list</em>) – Query parameters</p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="#api.database.enums.DBFormat" title="api.database.enums.DBFormat"><em>DBFormat</em></a>) – Data formatting mode</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Query result</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list, dict or value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.database.tools.DatabaseConnection.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raise_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#api.database.tools.DatabaseConnection.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a query to write data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>str</em>) – SQL query text</p></li>
+<li><p><strong>args</strong> (<em>list</em>) – Query parameters</p></li>
+<li><p><strong>log_errors</strong> (<em>bool</em>) – Log errors, default True</p></li>
+<li><p><strong>raise_errors</strong> (<em>bool</em>) – Raise errors, default False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Successful execution of the request</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.database.tools.DatabaseWraper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.database.tools.</span></span><span class="sig-name descname"><span class="pre">DatabaseWraper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#api.database.tools.DatabaseWraper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A wrapper for working with SQLite database.</p>
+<p>Allows you to open and close a connection, 
+execute database queries.</p>
+<p>Uses context manager to automatically 
+open and close a connection.</p>
+<p>Example usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">With</span> <span class="n">DatabaseWraper</span><span class="p">(</span><span class="s1">&#39;db.db&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM table&#39;</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.database.tools.DatabaseWraper.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#api.database.tools.DatabaseWraper.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes the database connection</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.database.tools.DatabaseWraper.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#api.database.tools.DatabaseWraper.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes an SQL query against a database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>str</em>) – Query text</p></li>
+<li><p><strong>params</strong> (<em>tuple</em>) – Query parameters</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Query result</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.database.tools.DatabaseWraper.open">
+<span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#api.database.tools.DatabaseWraper.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens a connection to the database.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="api.database.tools.GenerateDatabase">
+<span class="sig-prename descclassname"><span class="pre">api.database.tools.</span></span><span class="sig-name descname"><span class="pre">GenerateDatabase</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#api.database.tools.GenerateDatabase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates database by schema if it does not exist.</p>
+<p>Creates a database file using the path from the config if it does not exist.
+Executes the database schema script to initialise tables.</p>
+<p>Uses DatabaseWrapper to work with the database.</p>
+</dd></dl>
+
+</section>
+<section id="module-api.database">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-api.database" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="api.html">api package</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="bot.html">bot package</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Tumpa-Prizrak.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    </div>
+  </body>
+</html>
