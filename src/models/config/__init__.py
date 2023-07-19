@@ -19,8 +19,8 @@ class Configs(Enum):
         config = load_config(Configs.bot_info)
 
     """
-    bot_info = "/home/tumpa/Projects/yadis-discord-bot/src/models/config/bot_info.json", dataclasses.BotInfo
-    database = "/home/tumpa/Projects/yadis-discord-bot/src/models/config/database.json", dataclasses.Database
+    bot_info = "/models/config/bot_info.json", dataclasses.BotInfo
+    database = "/models/config/database.json", dataclasses.Database
 
 
 def load_config(
