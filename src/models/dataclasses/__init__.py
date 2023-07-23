@@ -2,6 +2,7 @@ from dataclasses import dataclass
 import discord
 import typing
 from discord.ext import commands
+# from enum import StrEnum, auto
 
 
 @dataclass
@@ -30,6 +31,7 @@ class BotInfo:  # Config only
     token: str
     prefix: str
     intents: int
+    devs: list[int]
 
 
 @dataclass
@@ -118,3 +120,12 @@ class Guild:
             raise ValueError("Guild is not found")
         if self.owner is None:
             raise ValueError("Owner is not found")
+
+
+@dataclass
+class Error:
+    title: str
+    description: str
+    code: int
+
+

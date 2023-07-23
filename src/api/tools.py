@@ -1,6 +1,8 @@
 from os import listdir
+from typing import overload
 from discord.ext.commands import Bot  # type: ignore
 import traceback
+import discord
 
 
 async def load_extensions(bot: Bot, extensions_dir: str, extension_prefix: str) -> None:
@@ -32,3 +34,7 @@ async def load_extensions(bot: Bot, extensions_dir: str, extension_prefix: str) 
                 bot.logger.info(f"{extension[len(extension_prefix):-3]} loaded")  # type: ignore
             except Exception:
                 bot.logger.error(f"Extension {load_path}.{extension[len(extension_prefix):-3]} raised following error:\n{traceback.format_exc()}\n\n")  # type: ignore
+
+
+def generate_error_embed(obj, /) -> discord.Embed:
+    return discord.Embed(title=title, description=description, color=discord.Color.red()).set_image(url=f"https://http.cat/{code}.jpg")

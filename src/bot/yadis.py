@@ -37,6 +37,16 @@ class Yadis(Bot):
         self.token: str = token
         self.logger: Logger = logger.setup_logger()
     
+
+    async def sync_slash(self):
+        for guild in self.guilds:
+            self.tree.copy_global_to(guild=guild)
+            self.logger.info(f"Copying slashes to {guild.name}")
+        
+        await self.tree.sync(guild=None)
+        self.logger.info("Slash commands synced!")
+
+    
     async def setup_hook(self) -> None:
         """Configuring the bot before launching it.
         
@@ -50,6 +60,7 @@ class Yadis(Bot):
         
         await load_extensions(self, "bot/events", "event_")
 
+        await self.sync_slash()
 
     async def on_ready(self) -> None:
         """Actions at bot startup.

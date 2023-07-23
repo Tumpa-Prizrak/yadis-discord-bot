@@ -6,9 +6,17 @@ import os
 from api.database.enums import DBFormat
 from models.dataclasses import Database
 from models.config import load_config, Configs
-from models.error import ConnectionClosed
 
 config = load_config(Configs.database)
+
+
+class ConnectionClosed(Exception):
+    """Exception thrown when trying to use a closed database connection.
+    
+    Inherited from Exception.
+    """
+    ...
+
 
 
 class DatabaseWraper:
